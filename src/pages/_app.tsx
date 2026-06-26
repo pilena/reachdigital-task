@@ -1,11 +1,31 @@
-import type { AppProps } from 'next/app';
-import { ApolloProvider } from '@apollo/client';
-import { apolloClient } from '@/lib/apolloClient';
+import type { AppProps } from "next/app";
+import { ApolloProvider } from "@apollo/client";
+import { CacheProvider, EmotionCache } from "@emotion/react";
+import { ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import { apolloClient } from "@/lib/apolloClient";
+import createEmotionCache from "@/lib/createEmotionCache";
+import theme from "@/lib/theme";
 
-export default function App({ Component, pageProps }: AppProps) {
+const clientSideEmotionCache = createEmotionCache();
+
+type MyAppProps = AppProps & {
+  emotionCache?: EmotionCache;
+};
+
+export default function App({
+  Component,
+  pageProps,
+  emotionCache = clientSideEmotionCache,
+}: MyAppProps) {
   return (
-    <ApolloProvider client={apolloClient}>
-      <Component {...pageProps} />
-    </ApolloProvider>
+    <CacheProvider value={emotionCache}>
+      <ApolloProvider client={apolloClient}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </ApolloProvider>
+    </CacheProvider>
   );
 }

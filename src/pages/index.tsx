@@ -1,6 +1,6 @@
-import { GetStaticProps } from 'next';
-import { apolloClient } from '@/lib/apolloClient';
-import { CategoriesDocument, CategoriesQuery } from '@/generated/graphql';
+import { GetStaticProps } from "next";
+import { apolloClient } from "@/lib/apolloClient";
+import { CategoriesDocument, CategoriesQuery } from "@/generated/graphql";
 
 type HomeProps = {
   categories: CategoriesQuery;
