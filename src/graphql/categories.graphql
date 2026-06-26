@@ -1,0 +1,19 @@
+query Categories {
+  categories(filters: { ids: { eq: "2" } }) {
+    items {
+      id
+      name
+      url_key
+      children {
+        id
+        name
+        url_key
+        children {
+          id
+          name
+          url_key
+        }
+      }
+    }
+  }
+}
