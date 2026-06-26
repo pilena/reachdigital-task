@@ -1,6 +1,8 @@
-import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { ApolloClient, InMemoryCache, HttpLink } from '@apollo/client';
 
 export const apolloClient = new ApolloClient({
-  uri: "https://backend.reachdigital.dev/graphql",
+  link: new HttpLink({
+    uri: 'https://backend.reachdigital.dev/graphql',
+  }),
   cache: new InMemoryCache(),
 });
