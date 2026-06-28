@@ -12,6 +12,11 @@ query Categories {
           id
           name
           url_key
+          children {
+            id
+            name
+            url_key
+          }
         }
       }
     }

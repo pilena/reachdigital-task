@@ -9291,6 +9291,11 @@ export type CategoriesQuery = {
           id: number | null;
           name: string | null;
           url_key: string | null;
+          children: Array<{
+            id: number | null;
+            name: string | null;
+            url_key: string | null;
+          } | null> | null;
         } | null> | null;
       } | null> | null;
     } | null> | null;
@@ -9312,6 +9317,11 @@ export const CategoriesDocument = gql`
             id
             name
             url_key
+            children {
+              id
+              name
+              url_key
+            }
           }
         }
       }
