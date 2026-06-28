@@ -11,6 +11,7 @@ import createEmotionServer from "@emotion/server/create-instance";
 import createEmotionCache from "@/lib/createEmotionCache";
 import type { AppProps } from "next/app";
 import type { EmotionCache } from "@emotion/react";
+import { openSans } from "@/lib/fonts";
 
 interface MyDocumentProps extends DocumentInitialProps {
   emotionStyleTags: React.ReactElement[];
@@ -19,7 +20,7 @@ interface MyDocumentProps extends DocumentInitialProps {
 export default class MyDocument extends Document<MyDocumentProps> {
   render() {
     return (
-      <Html lang="en">
+      <Html lang="en" className={`${openSans.variable}`}>
         <Head>{this.props.emotionStyleTags}</Head>
         <body>
           <Main />

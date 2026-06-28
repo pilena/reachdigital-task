@@ -6,6 +6,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { apolloClient } from "@/lib/apolloClient";
 import createEmotionCache from "@/lib/createEmotionCache";
 import theme from "@/lib/theme";
+import { openSans } from "@/lib/fonts";
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -19,13 +20,15 @@ export default function App({
   emotionCache = clientSideEmotionCache,
 }: MyAppProps) {
   return (
-    <CacheProvider value={emotionCache}>
-      <ApolloProvider client={apolloClient}>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <Component {...pageProps} />
-        </ThemeProvider>
-      </ApolloProvider>
-    </CacheProvider>
+    <div className={`${openSans.variable}`}>
+      <CacheProvider value={emotionCache}>
+        <ApolloProvider client={apolloClient}>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <Component {...pageProps} />
+          </ThemeProvider>
+        </ApolloProvider>
+      </CacheProvider>
+    </div>
   );
 }
