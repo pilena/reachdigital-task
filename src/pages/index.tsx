@@ -1,32 +1,24 @@
 import { GetStaticProps } from "next";
 import { apolloClient } from "@/lib/apolloClient";
 import { CategoriesDocument, CategoriesQuery } from "@/generated/graphql";
+import Layout from "@/components/Layout/Layout";
+import Hero from "@/components/Hero/Hero";
+import UspStrip from "@/components/UspStrip/UspStrip";
+import Faq from "@/components/Faq/Faq";
+import CategoryShowcase from "@/components/CategoryShowcase/CategoryShowcase";
 
 type HomeProps = {
   categories: CategoriesQuery;
 };
 
 export default function Home({ categories }: HomeProps) {
-  const rootCategories = categories?.categories?.items?.[0]?.children ?? [];
-
   return (
-    <div>
-      <h1>Categories test</h1>
-      <ul>
-        {rootCategories.map((category) => (
-          <li key={category?.id}>
-            {category?.name}
-            {category?.children && category.children.length > 0 && (
-              <ul>
-                {category.children.map((sub) => (
-                  <li key={sub?.id}>{sub?.name}</li>
-                ))}
-              </ul>
-            )}
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Layout categories={categories.categories}>
+      <Hero />
+      <UspStrip />
+      <CategoryShowcase categories={categories.categories} />
+      <Faq />
+    </Layout>
   );
 }
 
