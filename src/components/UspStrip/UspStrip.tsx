@@ -55,7 +55,11 @@ export default function UspStrip() {
             >
               <Icon fontSize="large" />
               <Box>
-                <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
+                <Typography
+                  variant="subtitle1"
+                  component="p"
+                  sx={{ fontWeight: 600 }}
+                >
                   {title}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">

@@ -51,7 +51,11 @@ export default function CategoryShowcase({
                   },
                 }}
               >
-                <Typography variant="h5" sx={{ fontWeight: 700 }}>
+                <Typography
+                  variant="h5"
+                  component="h3"
+                  sx={{ fontWeight: 700 }}
+                >
                   {category?.name}
                 </Typography>
                 <Box
