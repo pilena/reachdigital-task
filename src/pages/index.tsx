@@ -1,7 +1,6 @@
 import { GetStaticProps } from "next";
 import { apolloClient } from "@/lib/apolloClient";
 import { CategoriesDocument, CategoriesQuery } from "@/generated/graphql";
-import Layout from "@/components/layout/Layout";
 import Hero from "@/components/home/Hero";
 import UspStrip from "@/components/home/UspStrip";
 import Faq from "@/components/home/Faq";
@@ -10,6 +9,7 @@ import Seo from "@/components/common/Seo";
 import { getHomepageProducts } from "@/lib/queries/getHomepageProducts";
 import ProductCarousel from "@/components/product/ProductCarousel";
 import { Product } from "@/types/product";
+import Layout from "@/components/layout/Layout";
 
 type HomeProps = {
   categories: CategoriesQuery;

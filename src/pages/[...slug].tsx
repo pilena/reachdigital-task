@@ -1,5 +1,4 @@
 import type { GetStaticPaths, GetStaticProps } from "next";
-import Layout from "@/components/layout/Layout";
 import Seo from "@/components/common/Seo";
 import CategoryLanding from "@/components/category/CategoryLanding";
 import Plp from "@/components/category/Plp";
@@ -11,6 +10,7 @@ import { getCategoryProducts } from "@/lib/queries/getCategoryProducts";
 import { Product } from "@/types/product";
 import Breadcrumbs, { Crumb } from "@/components/common/Breadcrumbs";
 import Container from "@mui/material/Container";
+import Layout from "@/components/layout/Layout";
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://reachdigital-task.vercel.app";
