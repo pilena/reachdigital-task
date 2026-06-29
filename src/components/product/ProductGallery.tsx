@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Box } from "@mui/material";
-import Carousel from "@/components/Carousel/Carousel";
+import Carousel from "@/components/common/Carousel";
 import { ProductImage } from "@/types/productDetail";
 
 type Props = { images: ProductImage[]; productName: string };

@@ -1,6 +1,6 @@
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import ProductCard from "@/components/ProductCard/ProductCard";
+import ProductCard from "@/components/product/ProductCard";
 import { Product } from "@/types/product";
 
 type ProductGridProps = {

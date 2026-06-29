@@ -22,7 +22,7 @@ import Link from "next/link";
 import { CategoriesQuery } from "@/generated/graphql";
 import Image from "next/image";
 import { useCartCount } from "@/lib/cart";
-import CartDrawer from "../CartDrawer/CartDrawer";
+import CartDrawer from "../cart/CartDrawer";
 
 type CategoryNode = {
   id: number | null;

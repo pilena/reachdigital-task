@@ -1,14 +1,14 @@
 import { GetStaticProps } from "next";
 import { apolloClient } from "@/lib/apolloClient";
 import { CategoriesDocument, CategoriesQuery } from "@/generated/graphql";
-import Layout from "@/components/Layout/Layout";
-import Hero from "@/components/Hero/Hero";
-import UspStrip from "@/components/UspStrip/UspStrip";
-import Faq from "@/components/Faq/Faq";
-import CategoryShowcase from "@/components/CategoryShowcase/CategoryShowcase";
-import Seo from "@/components/Seo/Seo";
+import Layout from "@/components/layout/Layout";
+import Hero from "@/components/home/Hero";
+import UspStrip from "@/components/home/UspStrip";
+import Faq from "@/components/home/Faq";
+import CategoryShowcase from "@/components/home/CategoryShowcase";
+import Seo from "@/components/common/Seo";
 import { getHomepageProducts } from "@/lib/queries/getHomepageProducts";
-import ProductCarousel from "@/components/ProductCarousel/ProductCarousel";
+import ProductCarousel from "@/components/product/ProductCarousel";
 import { Product } from "@/types/product";
 
 type HomeProps = {

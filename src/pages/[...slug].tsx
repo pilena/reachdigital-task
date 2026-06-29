@@ -1,15 +1,15 @@
 import type { GetStaticPaths, GetStaticProps } from "next";
-import Layout from "@/components/Layout/Layout";
-import Seo from "@/components/Seo/Seo";
-import CategoryLanding from "@/components/CategoryLanding/CategoryLanding";
-import Plp from "@/components/Plp/Plp";
+import Layout from "@/components/layout/Layout";
+import Seo from "@/components/common/Seo";
+import CategoryLanding from "@/components/category/CategoryLanding";
+import Plp from "@/components/category/Plp";
 import { CategoriesQuery } from "@/generated/graphql";
 import { getCategories } from "@/lib/queries/getCategories";
 import { getCategoryLanding } from "@/lib/queries/getCategoryLanding";
 import { getCategoryMeta } from "@/lib/queries/getCategoryMeta";
 import { getCategoryProducts } from "@/lib/queries/getCategoryProducts";
 import { Product } from "@/types/product";
-import Breadcrumbs, { Crumb } from "@/components/Breadcrumbs/Breadcrumbs";
+import Breadcrumbs, { Crumb } from "@/components/common/Breadcrumbs";
 import Container from "@mui/material/Container";
 
 const SITE_URL =

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Box, Button, Typography } from "@mui/material";
 import { apolloClient } from "@/lib/apolloClient";
 import { CategoriesDocument, CategoriesQuery } from "@/generated/graphql";
-import Layout from "@/components/Layout/Layout";
+import Layout from "@/components/layout/Layout";
 
 type NotFoundProps = {
   categories: CategoriesQuery["categories"];

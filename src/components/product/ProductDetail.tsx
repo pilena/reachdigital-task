@@ -1,12 +1,12 @@
 import { useMemo, useState } from "react";
 import { Box, Button, Chip, Stack, Typography } from "@mui/material";
-import ProductGallery from "@/components/ProductGallery/ProductGallery";
-import Specifications from "@/components/Specifications/Specifications";
+import ProductGallery from "@/components/product/ProductGallery";
+import Specifications from "@/components/product/Specifications";
 import { ProductDetail as ProductDetailType } from "@/types/productDetail";
 import { addToCart } from "@/lib/cart";
-import OptionSelector from "../OptionsSelector/OptionsSelector";
-import QuantitySelector from "../QtySelector/QtySelector";
-import Breadcrumbs, { Crumb } from "../Breadcrumbs/Breadcrumbs";
+import OptionSelector from "./OptionsSelector";
+import QuantitySelector from "./QtySelector";
+import Breadcrumbs, { Crumb } from "../common/Breadcrumbs";
 
 function formatPrice(value: number, currency: string) {
   return new Intl.NumberFormat("en-US", {

@@ -1,6 +1,6 @@
 import { CategoriesQuery } from "@/generated/graphql";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
+import Header from "./Header";
+import Footer from "./Footer";
 
 type LayoutProps = {
   categories: CategoriesQuery["categories"];

@@ -10,7 +10,7 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import DeleteOutlineIcon from "@mui/icons-material/Delete";
 import { useCart, setQty, removeFromCart } from "@/lib/cart";
-import QuantitySelector from "../QtySelector/QtySelector";
+import QuantitySelector from "../product/QtySelector";
 
 function formatPrice(value: number, currency: string) {
   return new Intl.NumberFormat("en-US", {

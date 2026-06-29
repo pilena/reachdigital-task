@@ -3,7 +3,7 @@ import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import NextLink from "next/link";
-import ProductCarousel from "@/components/ProductCarousel/ProductCarousel";
+import ProductCarousel from "@/components/product/ProductCarousel";
 import { Product } from "@/types/product";
 
 type Subcategory = {

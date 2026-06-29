@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import Carousel from "@/components/Carousel/Carousel";
-import ProductCard from "@/components/ProductCard/ProductCard";
+import Carousel from "@/components/common/Carousel";
+import ProductCard from "@/components/product/ProductCard";
 import { Product } from "@/types/product";
 
 type ProductCarouselProps = {

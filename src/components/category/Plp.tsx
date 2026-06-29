@@ -11,7 +11,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Pagination from "@mui/material/Pagination";
 import Alert from "@mui/material/Alert";
-import ProductGrid from "@/components/ProductGrid/ProductGrid";
+import ProductGrid from "@/components/product/ProductGrid";
 import { Product } from "@/types/product";
 import { useRouter } from "next/router";
 

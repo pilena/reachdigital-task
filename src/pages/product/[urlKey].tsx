@@ -6,9 +6,9 @@ import { getProduct } from "@/lib/queries/getProduct";
 import { getHomepageProducts } from "@/lib/queries/getHomepageProducts";
 import { mapProduct } from "@/lib/mapProduct";
 import { ProductDetail as ProductDetailType } from "@/types/productDetail";
-import Layout from "@/components/Layout/Layout";
-import Seo from "@/components/Seo/Seo";
-import ProductDetail from "@/components/ProductDetail/ProductDetail";
+import Layout from "@/components/layout/Layout";
+import Seo from "@/components/common/Seo";
+import ProductDetail from "@/components/product/ProductDetail";
 
 const SITE_URL = "https://reachdigital-task.vercel.app";
 
