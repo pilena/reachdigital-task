@@ -28,11 +28,13 @@ export default function Seo({
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       {ogImage && <meta property="og:image" content={ogImage} />}
+      {canonical && <meta property="og:url" content={canonical} />}
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
+      {ogImage && <meta name="twitter:image" content={ogImage} />}
 
       {canonical && <link rel="canonical" href={canonical} />}
     </Head>

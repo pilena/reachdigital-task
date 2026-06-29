@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://reachdigital-task.vercel.app/sitemap.xml
