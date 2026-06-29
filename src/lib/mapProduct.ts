@@ -16,6 +16,16 @@ export function mapProduct(item: ProductItem): ProductDetail {
 
   const price = item.price_range.minimum_price.regular_price;
 
+  const cats = (item.categories ?? []).filter(notNull);
+  const deepest = cats.reduce<(typeof cats)[number] | null>(
+    (best, c) => (!best || (c.level ?? 0) > (best.level ?? 0) ? c : best),
+    null,
+  );
+  const category =
+    deepest?.name && deepest.url_path
+      ? { name: deepest.name, urlPath: deepest.url_path }
+      : null;
+
   const base = {
     uid: item.uid,
     sku: item.sku ?? "",
@@ -30,6 +40,7 @@ export function mapProduct(item: ProductItem): ProductDetail {
     weight: "weight" in item ? (item.weight ?? null) : null,
     metaTitle: item.meta_title ?? null,
     metaDescription: item.meta_description ?? null,
+    category,
   };
 
   if (item.__typename === "ConfigurableProduct") {

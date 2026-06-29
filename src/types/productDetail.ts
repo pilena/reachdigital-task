@@ -34,4 +34,5 @@ export type ProductDetail = {
   variants: ProductVariant[];
   metaTitle: string | null;
   metaDescription: string | null;
+  category: { name: string; urlPath: string } | null;
 };

@@ -57,7 +57,21 @@ export default function ProductPage({ product, categories }: ProductPageProps) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </Head>
-      <ProductDetail product={product} />
+      <ProductDetail
+        product={product}
+        breadcrumbs={[
+          { name: "Home", href: "/" },
+          ...(product.category
+            ? [
+                {
+                  name: product.category.name,
+                  href: `/${product.category.urlPath}`,
+                },
+              ]
+            : []),
+          { name: product.name, href: `/product/${product.urlKey}` },
+        ]}
+      />
     </Layout>
   );
 }

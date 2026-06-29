@@ -683,6 +683,11 @@ export type ProductQuery = {
           stock_status: ProductStockStatus | null;
           meta_title: string | null;
           meta_description: string | null;
+          categories: Array<{
+            name: string | null;
+            url_path: string | null;
+            level: number | null;
+          } | null> | null;
           description: { html: string } | null;
           short_description: { html: string } | null;
           media_gallery: Array<
@@ -746,6 +751,11 @@ export type ProductQuery = {
               };
             } | null;
           } | null> | null;
+          categories: Array<{
+            name: string | null;
+            url_path: string | null;
+            level: number | null;
+          } | null> | null;
           description: { html: string } | null;
           short_description: { html: string } | null;
           media_gallery: Array<
@@ -779,6 +789,11 @@ export type ProductQuery = {
           stock_status: ProductStockStatus | null;
           meta_title: string | null;
           meta_description: string | null;
+          categories: Array<{
+            name: string | null;
+            url_path: string | null;
+            level: number | null;
+          } | null> | null;
           description: { html: string } | null;
           short_description: { html: string } | null;
           media_gallery: Array<
@@ -813,6 +828,11 @@ export type ProductQuery = {
           stock_status: ProductStockStatus | null;
           meta_title: string | null;
           meta_description: string | null;
+          categories: Array<{
+            name: string | null;
+            url_path: string | null;
+            level: number | null;
+          } | null> | null;
           description: { html: string } | null;
           short_description: { html: string } | null;
           media_gallery: Array<
@@ -847,6 +867,11 @@ export type ProductQuery = {
           stock_status: ProductStockStatus | null;
           meta_title: string | null;
           meta_description: string | null;
+          categories: Array<{
+            name: string | null;
+            url_path: string | null;
+            level: number | null;
+          } | null> | null;
           description: { html: string } | null;
           short_description: { html: string } | null;
           media_gallery: Array<
@@ -880,6 +905,11 @@ export type ProductQuery = {
           stock_status: ProductStockStatus | null;
           meta_title: string | null;
           meta_description: string | null;
+          categories: Array<{
+            name: string | null;
+            url_path: string | null;
+            level: number | null;
+          } | null> | null;
           description: { html: string } | null;
           short_description: { html: string } | null;
           media_gallery: Array<
@@ -1794,6 +1824,27 @@ export const ProductDocument = {
                       {
                         kind: "Field",
                         name: { kind: "Name", value: "meta_description" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "categories" },
+                        selectionSet: {
+                          kind: "SelectionSet",
+                          selections: [
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "name" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "url_path" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "level" },
+                            },
+                          ],
+                        },
                       },
                       {
                         kind: "Field",

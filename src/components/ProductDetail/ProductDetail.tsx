@@ -6,6 +6,7 @@ import { ProductDetail as ProductDetailType } from "@/types/productDetail";
 import { addToCart } from "@/lib/cart";
 import OptionSelector from "../OptionsSelector/OptionsSelector";
 import QuantitySelector from "../QtySelector/QtySelector";
+import Breadcrumbs, { Crumb } from "../Breadcrumbs/Breadcrumbs";
 
 function formatPrice(value: number, currency: string) {
   return new Intl.NumberFormat("en-US", {
@@ -16,8 +17,10 @@ function formatPrice(value: number, currency: string) {
 
 export default function ProductDetail({
   product,
+  breadcrumbs,
 }: {
   product: ProductDetailType;
+  breadcrumbs: Crumb[];
 }) {
   const [selected, setSelected] = useState<Record<string, string>>({});
   const [qty, setQty] = useState(1);
@@ -88,6 +91,7 @@ export default function ProductDetail({
         py: { xs: 4, md: 6 },
       }}
     >
+      <Breadcrumbs items={breadcrumbs} />
       <Box
         sx={{
           display: "grid",

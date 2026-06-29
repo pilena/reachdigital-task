@@ -9,6 +9,8 @@ import { getCategoryLanding } from "@/lib/queries/getCategoryLanding";
 import { getCategoryMeta } from "@/lib/queries/getCategoryMeta";
 import { getCategoryProducts } from "@/lib/queries/getCategoryProducts";
 import { Product } from "@/types/product";
+import Breadcrumbs, { Crumb } from "@/components/Breadcrumbs/Breadcrumbs";
+import Container from "@mui/material/Container";
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://reachdigital-task.vercel.app";
@@ -31,6 +33,7 @@ type LandingProps = {
   name: string;
   subcategories: Subcategory[];
   products: Product[];
+  breadcrumbs: Crumb[];
 };
 
 type PlpProps = {
@@ -41,6 +44,7 @@ type PlpProps = {
   categoryName: string;
   initialProducts: Product[];
   initialTotalPages: number;
+  breadcrumbs: Crumb[];
 };
 
 type PageProps = LandingProps | PlpProps;
@@ -53,6 +57,9 @@ export default function CategoryPage(props: PageProps) {
         description={props.seo.description}
         canonical={props.seo.canonical}
       />
+      <Container maxWidth="lg" sx={{ pt: 3 }}>
+        <Breadcrumbs items={props.breadcrumbs} />
+      </Container>
       {props.variant === "landing" ? (
         <CategoryLanding
           name={props.name}
@@ -114,6 +121,10 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ params }) => {
         name: cat.name ?? "",
         subcategories: (cat.children ?? []).filter(notNull),
         products: (cat.products?.items ?? []).filter(notNull),
+        breadcrumbs: [
+          { name: "Home", href: "/" },
+          { name: cat.name ?? "", href: `/${slug[0]}` },
+        ],
       },
       revalidate: 60,
     };
@@ -123,6 +134,9 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ params }) => {
   if (slug.length === 2) {
     const meta = await getCategoryMeta(slug[1]);
     const cat = meta.categories?.items?.[0];
+    const rootCat = categories?.items?.[0]?.children ?? [];
+    const parent = rootCat.find((c) => c?.url_key === slug[0]);
+
     if (!cat?.id) return { notFound: true };
 
     const productsData = await getCategoryProducts({
@@ -144,6 +158,11 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ params }) => {
         categoryName: cat.name ?? "",
         initialProducts: (productsData.products?.items ?? []).filter(notNull),
         initialTotalPages: productsData.products?.page_info?.total_pages ?? 1,
+        breadcrumbs: [
+          { name: "Home", href: "/" },
+          { name: parent?.name ?? slug[0], href: `/${slug[0]}` },
+          { name: cat.name ?? "", href: `/${slug.join("/")}` },
+        ],
       },
       revalidate: 60,
     };

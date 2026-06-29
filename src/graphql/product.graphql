@@ -9,6 +9,11 @@ query Product($urlKey: String!) {
       stock_status
       meta_title
       meta_description
+      categories {
+        name
+        url_path
+        level
+      }
       description {
         html
       }
