@@ -306,6 +306,9 @@ export type ProductAttributeSortInput = {
   relevance?: SortEnum | null | undefined;
 };
 
+/** This enumeration states whether a product stock status is in stock or out of stock */
+export type ProductStockStatus = "IN_STOCK" | "OUT_OF_STOCK";
+
 /** Indicates whether to return results in ascending or descending order. */
 export type SortEnum = "ASC" | "DESC";
 
@@ -649,6 +652,249 @@ export type HomepageProductsQuery = {
           name: string | null;
           url_key: string | null;
           image: { url: string | null; label: string | null } | null;
+          price_range: {
+            minimum_price: {
+              regular_price: {
+                value: number | null;
+                currency: CurrencyEnum | null;
+              };
+            };
+          };
+        }
+      | null
+    > | null;
+  } | null;
+};
+
+export type ProductQueryVariables = Exact<{
+  urlKey: string;
+}>;
+
+export type ProductQuery = {
+  products: {
+    items: Array<
+      | {
+          __typename: "BundleProduct";
+          weight: number | null;
+          uid: string;
+          sku: string | null;
+          name: string | null;
+          url_key: string | null;
+          stock_status: ProductStockStatus | null;
+          meta_title: string | null;
+          meta_description: string | null;
+          description: { html: string } | null;
+          short_description: { html: string } | null;
+          media_gallery: Array<
+            | {
+                url: string | null;
+                label: string | null;
+                position: number | null;
+              }
+            | {
+                url: string | null;
+                label: string | null;
+                position: number | null;
+              }
+            | null
+          > | null;
+          price_range: {
+            minimum_price: {
+              regular_price: {
+                value: number | null;
+                currency: CurrencyEnum | null;
+              };
+            };
+          };
+        }
+      | {
+          __typename: "ConfigurableProduct";
+          weight: number | null;
+          uid: string;
+          sku: string | null;
+          name: string | null;
+          url_key: string | null;
+          stock_status: ProductStockStatus | null;
+          meta_title: string | null;
+          meta_description: string | null;
+          configurable_options: Array<{
+            uid: string;
+            attribute_code: string | null;
+            label: string | null;
+            values: Array<{
+              uid: string | null;
+              label: string | null;
+            } | null> | null;
+          } | null> | null;
+          variants: Array<{
+            attributes: Array<{
+              code: string | null;
+              label: string | null;
+              value_index: number | null;
+            } | null> | null;
+            product: {
+              uid: string;
+              sku: string | null;
+              stock_status: ProductStockStatus | null;
+              price_range: {
+                minimum_price: {
+                  regular_price: {
+                    value: number | null;
+                    currency: CurrencyEnum | null;
+                  };
+                };
+              };
+            } | null;
+          } | null> | null;
+          description: { html: string } | null;
+          short_description: { html: string } | null;
+          media_gallery: Array<
+            | {
+                url: string | null;
+                label: string | null;
+                position: number | null;
+              }
+            | {
+                url: string | null;
+                label: string | null;
+                position: number | null;
+              }
+            | null
+          > | null;
+          price_range: {
+            minimum_price: {
+              regular_price: {
+                value: number | null;
+                currency: CurrencyEnum | null;
+              };
+            };
+          };
+        }
+      | {
+          __typename: "DownloadableProduct";
+          uid: string;
+          sku: string | null;
+          name: string | null;
+          url_key: string | null;
+          stock_status: ProductStockStatus | null;
+          meta_title: string | null;
+          meta_description: string | null;
+          description: { html: string } | null;
+          short_description: { html: string } | null;
+          media_gallery: Array<
+            | {
+                url: string | null;
+                label: string | null;
+                position: number | null;
+              }
+            | {
+                url: string | null;
+                label: string | null;
+                position: number | null;
+              }
+            | null
+          > | null;
+          price_range: {
+            minimum_price: {
+              regular_price: {
+                value: number | null;
+                currency: CurrencyEnum | null;
+              };
+            };
+          };
+        }
+      | {
+          __typename: "GroupedProduct";
+          weight: number | null;
+          uid: string;
+          sku: string | null;
+          name: string | null;
+          url_key: string | null;
+          stock_status: ProductStockStatus | null;
+          meta_title: string | null;
+          meta_description: string | null;
+          description: { html: string } | null;
+          short_description: { html: string } | null;
+          media_gallery: Array<
+            | {
+                url: string | null;
+                label: string | null;
+                position: number | null;
+              }
+            | {
+                url: string | null;
+                label: string | null;
+                position: number | null;
+              }
+            | null
+          > | null;
+          price_range: {
+            minimum_price: {
+              regular_price: {
+                value: number | null;
+                currency: CurrencyEnum | null;
+              };
+            };
+          };
+        }
+      | {
+          __typename: "SimpleProduct";
+          weight: number | null;
+          uid: string;
+          sku: string | null;
+          name: string | null;
+          url_key: string | null;
+          stock_status: ProductStockStatus | null;
+          meta_title: string | null;
+          meta_description: string | null;
+          description: { html: string } | null;
+          short_description: { html: string } | null;
+          media_gallery: Array<
+            | {
+                url: string | null;
+                label: string | null;
+                position: number | null;
+              }
+            | {
+                url: string | null;
+                label: string | null;
+                position: number | null;
+              }
+            | null
+          > | null;
+          price_range: {
+            minimum_price: {
+              regular_price: {
+                value: number | null;
+                currency: CurrencyEnum | null;
+              };
+            };
+          };
+        }
+      | {
+          __typename: "VirtualProduct";
+          uid: string;
+          sku: string | null;
+          name: string | null;
+          url_key: string | null;
+          stock_status: ProductStockStatus | null;
+          meta_title: string | null;
+          meta_description: string | null;
+          description: { html: string } | null;
+          short_description: { html: string } | null;
+          media_gallery: Array<
+            | {
+                url: string | null;
+                label: string | null;
+                position: number | null;
+              }
+            | {
+                url: string | null;
+                label: string | null;
+                position: number | null;
+              }
+            | null
+          > | null;
           price_range: {
             minimum_price: {
               regular_price: {
@@ -1460,3 +1706,382 @@ export const HomepageProductsDocument = {
   HomepageProductsQuery,
   HomepageProductsQueryVariables
 >;
+export const ProductDocument = {
+  kind: "Document",
+  definitions: [
+    {
+      kind: "OperationDefinition",
+      operation: "query",
+      name: { kind: "Name", value: "Product" },
+      variableDefinitions: [
+        {
+          kind: "VariableDefinition",
+          variable: {
+            kind: "Variable",
+            name: { kind: "Name", value: "urlKey" },
+          },
+          type: {
+            kind: "NonNullType",
+            type: {
+              kind: "NamedType",
+              name: { kind: "Name", value: "String" },
+            },
+          },
+        },
+      ],
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "products" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "filter" },
+                value: {
+                  kind: "ObjectValue",
+                  fields: [
+                    {
+                      kind: "ObjectField",
+                      name: { kind: "Name", value: "url_key" },
+                      value: {
+                        kind: "ObjectValue",
+                        fields: [
+                          {
+                            kind: "ObjectField",
+                            name: { kind: "Name", value: "eq" },
+                            value: {
+                              kind: "Variable",
+                              name: { kind: "Name", value: "urlKey" },
+                            },
+                          },
+                        ],
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "items" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "__typename" },
+                      },
+                      { kind: "Field", name: { kind: "Name", value: "uid" } },
+                      { kind: "Field", name: { kind: "Name", value: "sku" } },
+                      { kind: "Field", name: { kind: "Name", value: "name" } },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "url_key" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "stock_status" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "meta_title" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "meta_description" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "description" },
+                        selectionSet: {
+                          kind: "SelectionSet",
+                          selections: [
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "html" },
+                            },
+                          ],
+                        },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "short_description" },
+                        selectionSet: {
+                          kind: "SelectionSet",
+                          selections: [
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "html" },
+                            },
+                          ],
+                        },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "media_gallery" },
+                        selectionSet: {
+                          kind: "SelectionSet",
+                          selections: [
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "url" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "label" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "position" },
+                            },
+                          ],
+                        },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "price_range" },
+                        selectionSet: {
+                          kind: "SelectionSet",
+                          selections: [
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "minimum_price" },
+                              selectionSet: {
+                                kind: "SelectionSet",
+                                selections: [
+                                  {
+                                    kind: "Field",
+                                    name: {
+                                      kind: "Name",
+                                      value: "regular_price",
+                                    },
+                                    selectionSet: {
+                                      kind: "SelectionSet",
+                                      selections: [
+                                        {
+                                          kind: "Field",
+                                          name: {
+                                            kind: "Name",
+                                            value: "value",
+                                          },
+                                        },
+                                        {
+                                          kind: "Field",
+                                          name: {
+                                            kind: "Name",
+                                            value: "currency",
+                                          },
+                                        },
+                                      ],
+                                    },
+                                  },
+                                ],
+                              },
+                            },
+                          ],
+                        },
+                      },
+                      {
+                        kind: "InlineFragment",
+                        typeCondition: {
+                          kind: "NamedType",
+                          name: {
+                            kind: "Name",
+                            value: "PhysicalProductInterface",
+                          },
+                        },
+                        selectionSet: {
+                          kind: "SelectionSet",
+                          selections: [
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "weight" },
+                            },
+                          ],
+                        },
+                      },
+                      {
+                        kind: "InlineFragment",
+                        typeCondition: {
+                          kind: "NamedType",
+                          name: { kind: "Name", value: "ConfigurableProduct" },
+                        },
+                        selectionSet: {
+                          kind: "SelectionSet",
+                          selections: [
+                            {
+                              kind: "Field",
+                              name: {
+                                kind: "Name",
+                                value: "configurable_options",
+                              },
+                              selectionSet: {
+                                kind: "SelectionSet",
+                                selections: [
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "uid" },
+                                  },
+                                  {
+                                    kind: "Field",
+                                    name: {
+                                      kind: "Name",
+                                      value: "attribute_code",
+                                    },
+                                  },
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "label" },
+                                  },
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "values" },
+                                    selectionSet: {
+                                      kind: "SelectionSet",
+                                      selections: [
+                                        {
+                                          kind: "Field",
+                                          name: { kind: "Name", value: "uid" },
+                                        },
+                                        {
+                                          kind: "Field",
+                                          name: {
+                                            kind: "Name",
+                                            value: "label",
+                                          },
+                                        },
+                                      ],
+                                    },
+                                  },
+                                ],
+                              },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "variants" },
+                              selectionSet: {
+                                kind: "SelectionSet",
+                                selections: [
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "attributes" },
+                                    selectionSet: {
+                                      kind: "SelectionSet",
+                                      selections: [
+                                        {
+                                          kind: "Field",
+                                          name: { kind: "Name", value: "code" },
+                                        },
+                                        {
+                                          kind: "Field",
+                                          name: {
+                                            kind: "Name",
+                                            value: "label",
+                                          },
+                                        },
+                                        {
+                                          kind: "Field",
+                                          name: {
+                                            kind: "Name",
+                                            value: "value_index",
+                                          },
+                                        },
+                                      ],
+                                    },
+                                  },
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "product" },
+                                    selectionSet: {
+                                      kind: "SelectionSet",
+                                      selections: [
+                                        {
+                                          kind: "Field",
+                                          name: { kind: "Name", value: "uid" },
+                                        },
+                                        {
+                                          kind: "Field",
+                                          name: { kind: "Name", value: "sku" },
+                                        },
+                                        {
+                                          kind: "Field",
+                                          name: {
+                                            kind: "Name",
+                                            value: "stock_status",
+                                          },
+                                        },
+                                        {
+                                          kind: "Field",
+                                          name: {
+                                            kind: "Name",
+                                            value: "price_range",
+                                          },
+                                          selectionSet: {
+                                            kind: "SelectionSet",
+                                            selections: [
+                                              {
+                                                kind: "Field",
+                                                name: {
+                                                  kind: "Name",
+                                                  value: "minimum_price",
+                                                },
+                                                selectionSet: {
+                                                  kind: "SelectionSet",
+                                                  selections: [
+                                                    {
+                                                      kind: "Field",
+                                                      name: {
+                                                        kind: "Name",
+                                                        value: "regular_price",
+                                                      },
+                                                      selectionSet: {
+                                                        kind: "SelectionSet",
+                                                        selections: [
+                                                          {
+                                                            kind: "Field",
+                                                            name: {
+                                                              kind: "Name",
+                                                              value: "value",
+                                                            },
+                                                          },
+                                                          {
+                                                            kind: "Field",
+                                                            name: {
+                                                              kind: "Name",
+                                                              value: "currency",
+                                                            },
+                                                          },
+                                                        ],
+                                                      },
+                                                    },
+                                                  ],
+                                                },
+                                              },
+                                            ],
+                                          },
+                                        },
+                                      ],
+                                    },
+                                  },
+                                ],
+                              },
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<ProductQuery, ProductQueryVariables>;

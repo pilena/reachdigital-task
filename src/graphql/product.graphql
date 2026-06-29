@@ -1,0 +1,67 @@
+query Product($urlKey: String!) {
+  products(filter: { url_key: { eq: $urlKey } }) {
+    items {
+      __typename
+      uid
+      sku
+      name
+      url_key
+      stock_status
+      meta_title
+      meta_description
+      description {
+        html
+      }
+      short_description {
+        html
+      }
+      media_gallery {
+        url
+        label
+        position
+      }
+      price_range {
+        minimum_price {
+          regular_price {
+            value
+            currency
+          }
+        }
+      }
+      ... on PhysicalProductInterface {
+        weight
+      }
+      ... on ConfigurableProduct {
+        configurable_options {
+          uid
+          attribute_code
+          label
+          values {
+            uid
+            label
+          }
+        }
+        variants {
+          attributes {
+            code
+            label
+            value_index
+          }
+          product {
+            uid
+            sku
+            stock_status
+            price_range {
+              minimum_price {
+                regular_price {
+                  value
+                  currency
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

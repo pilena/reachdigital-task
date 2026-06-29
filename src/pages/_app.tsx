@@ -7,6 +7,7 @@ import { apolloClient } from "@/lib/apolloClient";
 import createEmotionCache from "@/lib/createEmotionCache";
 import theme from "@/lib/theme";
 import { openSans } from "@/lib/fonts";
+import { useCartHydration } from "@/lib/cart";
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -19,6 +20,7 @@ export default function App({
   pageProps,
   emotionCache = clientSideEmotionCache,
 }: MyAppProps) {
+  useCartHydration();
   return (
     <div className={`${openSans.variable}`}>
       <CacheProvider value={emotionCache}>
