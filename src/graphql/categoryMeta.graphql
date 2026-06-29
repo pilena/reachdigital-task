@@ -1,0 +1,11 @@
+query CategoryMeta($urlKey: String!) {
+  categories(filters: { url_key: { eq: $urlKey } }) {
+    items {
+      id
+      name
+      url_key
+      meta_title
+      meta_description
+    }
+  }
+}

@@ -10,6 +10,11 @@ const nextConfig: NextConfig = {
         hostname: "backend.reachdigital.dev",
         pathname: "/media/**",
       },
+      {
+        protocol: "https",
+        hostname: "backend.reachdigital.dev",
+        pathname: "/static/**",
+      },
     ],
   },
 };
