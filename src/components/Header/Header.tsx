@@ -21,6 +21,8 @@ import { useTheme } from "@mui/material/styles";
 import Link from "next/link";
 import { CategoriesQuery } from "@/generated/graphql";
 import Image from "next/image";
+import { useCartCount } from "@/lib/cart";
+import CartDrawer from "../CartDrawer/CartDrawer";
 
 type CategoryNode = {
   id: number | null;
@@ -34,13 +36,14 @@ type HeaderProps = {
 };
 
 export default function Header({ categories }: HeaderProps) {
+  const cartCount = useCartCount();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const rootCategories =
     categories?.items?.[0]?.children ?? ([] as CategoryNode[]);
-  const quickLinks = rootCategories.slice(0, 2); // e.g. Women, Men
-
+  const quickLinks = rootCategories.slice(0, 2);
+  const [cartOpen, setCartOpen] = useState(false);
   const [shopOpen, setShopOpen] = useState(false);
   const [navStack, setNavStack] = useState<CategoryNode[]>([]);
 
@@ -128,8 +131,12 @@ export default function Header({ categories }: HeaderProps) {
           <IconButton aria-label="Account" sx={{ color: "common.white" }}>
             <PersonOutlineIcon />
           </IconButton>
-          <IconButton aria-label="Cart" sx={{ color: "common.white" }}>
-            <Badge badgeContent={0} color="primary">
+          <IconButton
+            aria-label="Cart"
+            onClick={() => setCartOpen(true)}
+            sx={{ color: "common.white" }}
+          >
+            <Badge badgeContent={cartCount} color="primary">
               <ShoppingCartIcon />
             </Badge>
           </IconButton>
@@ -170,6 +177,7 @@ export default function Header({ categories }: HeaderProps) {
           </List>
         </Box>
       </Drawer>
+      <CartDrawer open={cartOpen} onClose={() => setCartOpen(false)} />
     </AppBar>
   );
 }
