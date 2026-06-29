@@ -7,12 +7,16 @@ import UspStrip from "@/components/UspStrip/UspStrip";
 import Faq from "@/components/Faq/Faq";
 import CategoryShowcase from "@/components/CategoryShowcase/CategoryShowcase";
 import Seo from "@/components/Seo/Seo";
+import { getHomepageProducts } from "@/lib/queries/getHomepageProducts";
+import ProductCarousel from "@/components/ProductCarousel/ProductCarousel";
+import { Product } from "@/types/product";
 
 type HomeProps = {
   categories: CategoriesQuery;
+  products: Product[];
 };
 
-export default function Home({ categories }: HomeProps) {
+export default function Home({ categories, products }: HomeProps) {
   return (
     <Layout categories={categories.categories}>
       <Seo
@@ -21,6 +25,7 @@ export default function Home({ categories }: HomeProps) {
       />
       <Hero />
       <UspStrip />
+      <ProductCarousel title="Latest Designs" products={products} />
       <CategoryShowcase categories={categories.categories} />
       <Faq />
     </Layout>
@@ -28,13 +33,19 @@ export default function Home({ categories }: HomeProps) {
 }
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
-  const { data } = await apolloClient.query<CategoriesQuery>({
-    query: CategoriesDocument,
-  });
+  const [categoriesData, productsData] = await Promise.all([
+    apolloClient.query<CategoriesQuery>({ query: CategoriesDocument }),
+    getHomepageProducts(),
+  ]);
+
+  const products = (productsData.products?.items ?? []).filter(
+    (item): item is NonNullable<typeof item> => item != null,
+  );
 
   return {
     props: {
-      categories: data,
+      categories: categoriesData.data,
+      products,
     },
     revalidate: 60,
   };
