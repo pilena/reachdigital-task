@@ -17,6 +17,7 @@ export default function Hero() {
         src="/hero-image.webp"
         alt="New season collection"
         fill
+        fetchPriority="high"
         priority
         style={{ objectFit: "cover" }}
       />

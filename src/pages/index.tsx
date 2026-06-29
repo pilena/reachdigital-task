@@ -6,6 +6,7 @@ import Hero from "@/components/Hero/Hero";
 import UspStrip from "@/components/UspStrip/UspStrip";
 import Faq from "@/components/Faq/Faq";
 import CategoryShowcase from "@/components/CategoryShowcase/CategoryShowcase";
+import Seo from "@/components/Seo/Seo";
 
 type HomeProps = {
   categories: CategoriesQuery;
@@ -14,6 +15,10 @@ type HomeProps = {
 export default function Home({ categories }: HomeProps) {
   return (
     <Layout categories={categories.categories}>
+      <Seo
+        title="Home"
+        description="Discover the latest fashion collection for women, men, and kids. Free shipping over $50, easy 30-day returns."
+      />
       <Hero />
       <UspStrip />
       <CategoryShowcase categories={categories.categories} />
