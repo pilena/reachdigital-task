@@ -26,11 +26,20 @@ export default function ProductCard({ product }: ProductCardProps) {
   );
 
   return (
-    <Card sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
+    <Card
+      sx={{
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        borderRadius: 4,
+        boxShadow: 1,
+      }}
+    >
       <CardActionArea
         component={NextLink}
         href={`/product/${product.url_key}`}
         sx={{
+          backgroundColor: "background.paper",
           height: "100%",
           display: "flex",
           flexDirection: "column",
@@ -59,7 +68,10 @@ export default function ProductCard({ product }: ProductCardProps) {
           <Typography variant="body1" component="h3" sx={{ fontWeight: 500 }}>
             {product.name}
           </Typography>
-          <Typography variant="body1" sx={{ mt: 1, fontWeight: 700 }}>
+          <Typography
+            variant="body1"
+            sx={{ mt: 1, fontWeight: 700, color: "primary.dark" }}
+          >
             {price}
           </Typography>
         </CardContent>

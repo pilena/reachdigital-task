@@ -10,6 +10,7 @@ import { getHomepageProducts } from "@/lib/queries/getHomepageProducts";
 import ProductCarousel from "@/components/product/ProductCarousel";
 import { Product } from "@/types/product";
 import Layout from "@/components/layout/Layout";
+import StatementSection from "@/components/home/StatemantSection";
 
 type HomeProps = {
   categories: CategoriesQuery;
@@ -24,9 +25,10 @@ export default function Home({ categories, products }: HomeProps) {
         description="Discover the latest fashion collection for women, men, and kids. Free shipping over $50, easy 30-day returns."
       />
       <Hero />
-      <UspStrip />
       <ProductCarousel title="Latest Designs" products={products} />
+      <StatementSection />
       <CategoryShowcase categories={categories.categories} />
+      <UspStrip />
       <Faq />
     </Layout>
   );
