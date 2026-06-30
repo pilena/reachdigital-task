@@ -1,11 +1,10 @@
 import { ProductQuery } from "@/generated/graphql";
 import { ProductDetail } from "@/types/productDetail";
+import { notNull } from "./utils";
 
 type ProductItem = NonNullable<
   NonNullable<NonNullable<ProductQuery["products"]>["items"]>[number]
 >;
-
-const notNull = <T>(x: T): x is NonNullable<T> => x != null;
 
 export function mapProduct(item: ProductItem): ProductDetail {
   const images = [...(item.media_gallery ?? [])]

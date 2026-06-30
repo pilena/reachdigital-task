@@ -10,8 +10,7 @@ import Layout from "@/components/layout/Layout";
 import Seo from "@/components/common/Seo";
 import ProductDetail from "@/components/product/ProductDetail";
 import { SITE_URL } from "@/lib/config";
-
-const notNull = <T,>(x: T): x is NonNullable<T> => x != null;
+import { notNull } from "@/lib/utils";
 
 type ProductPageProps = {
   product: ProductDetailType;
