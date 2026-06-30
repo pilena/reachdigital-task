@@ -1,35 +1,26 @@
 import type { GetStaticPaths, GetStaticProps } from "next";
+import Container from "@mui/material/Container";
+import Layout from "@/components/layout/Layout";
 import Seo from "@/components/common/Seo";
+import Breadcrumbs, { Crumb } from "@/components/common/Breadcrumbs";
 import CategoryLanding from "@/components/category/CategoryLanding";
 import Plp from "@/components/category/Plp";
 import { CategoriesQuery } from "@/generated/graphql";
 import { getCategories } from "@/lib/queries/getCategories";
 import { getCategoryLanding } from "@/lib/queries/getCategoryLanding";
-import { getCategoryMeta } from "@/lib/queries/getCategoryMeta";
 import { getCategoryProducts } from "@/lib/queries/getCategoryProducts";
 import { Product } from "@/types/product";
-import Breadcrumbs, { Crumb } from "@/components/common/Breadcrumbs";
-import Container from "@mui/material/Container";
-import Layout from "@/components/layout/Layout";
+import { Subcategory } from "@/types/subcategory";
+import { SITE_URL } from "@/lib/config";
+import { notNull } from "@/lib/utils";
 
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://reachdigital-task.vercel.app";
-
-type Subcategory = {
-  uid: string;
-  name: string | null;
-  url_key: string | null;
-  url_path: string | null;
-  product_count: number | null;
-};
-
-type Seo = { title: string; description: string; canonical: string };
+type SeoData = { title: string; description: string; canonical: string };
 type Categories = CategoriesQuery["categories"];
 
 type LandingProps = {
   variant: "landing";
   categories: Categories;
-  seo: Seo;
+  seo: SeoData;
   name: string;
   subcategories: Subcategory[];
   products: Product[];
@@ -39,7 +30,7 @@ type LandingProps = {
 type PlpProps = {
   variant: "plp";
   categories: Categories;
-  seo: Seo;
+  seo: SeoData;
   categoryId: number;
   categoryName: string;
   initialProducts: Product[];
@@ -78,37 +69,70 @@ export default function CategoryPage(props: PageProps) {
   );
 }
 
-const notNull = <T,>(x: T): x is NonNullable<T> => x != null;
+type OneCategoryNode = {
+  name: string | null;
+  url_key: string | null;
+  children?: (OneCategoryNode | null)[] | null;
+};
+
+// build breadcrums on tree of categories
+function buildCrumbs(
+  roots: (OneCategoryNode | null)[],
+  slug: string[],
+): Crumb[] {
+  const crumbs: Crumb[] = [{ name: "Home", href: "/" }];
+  let level: (OneCategoryNode | null)[] = roots;
+  let acc = "";
+  for (const key of slug) {
+    const node = level.find((c) => c?.url_key === key) ?? null;
+    acc += `/${key}`;
+    crumbs.push({ name: node?.name ?? key, href: acc });
+    level = node?.children ?? [];
+  }
+  return crumbs;
+}
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const data = await getCategories();
-  const roots = data.categories?.items?.[0]?.children ?? [];
+  const roots = (data.categories?.items?.[0]?.children ??
+    []) as unknown as (OneCategoryNode | null)[];
 
   const paths: { params: { slug: string[] } }[] = [];
-  for (const cat of roots) {
-    if (!cat?.url_key) continue;
-    paths.push({ params: { slug: [cat.url_key] } });
-    for (const sub of cat.children ?? []) {
-      if (sub?.url_key) {
-        paths.push({ params: { slug: [cat.url_key, sub.url_key] } });
-      }
+  const walk = (
+    nodes: (OneCategoryNode | null)[] | null | undefined,
+    parent: string[],
+  ) => {
+    for (const n of nodes ?? []) {
+      if (!n?.url_key) continue;
+      const slug = [...parent, n.url_key];
+      paths.push({ params: { slug } });
+      walk(n.children, slug);
     }
-  }
+  };
+  walk(roots, []);
 
   return { paths, fallback: "blocking" };
 };
 
 export const getStaticProps: GetStaticProps<PageProps> = async ({ params }) => {
   const slug = (params?.slug as string[] | undefined) ?? [];
+  if (slug.length === 0) return { notFound: true };
+
   const categoriesData = await getCategories();
   const categories = categoriesData.categories;
+  const roots = (categories?.items?.[0]?.children ??
+    []) as unknown as (OneCategoryNode | null)[];
 
-  // Landing page: /[category]
-  if (slug.length === 1) {
-    const data = await getCategoryLanding(slug[0]);
-    const cat = data.categories?.items?.[0];
-    if (!cat) return { notFound: true };
+  const urlPath = slug.join("/");
+  const data = await getCategoryLanding(urlPath);
+  const cat = data.categories?.items?.[0];
+  if (!cat) return { notFound: true };
 
+  const breadcrumbs = buildCrumbs(roots, slug);
+  const children = (cat.children ?? []).filter(notNull);
+  const canonical = `${SITE_URL}/${urlPath}`;
+
+  if (children.length > 0) {
     return {
       props: {
         variant: "landing",
@@ -116,57 +140,40 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ params }) => {
         seo: {
           title: cat.meta_title || cat.name || "Category",
           description: cat.meta_description || `Shop ${cat.name} at our store.`,
-          canonical: `${SITE_URL}/${slug.join("/")}`,
+          canonical,
         },
         name: cat.name ?? "",
-        subcategories: (cat.children ?? []).filter(notNull),
+        subcategories: children,
         products: (cat.products?.items ?? []).filter(notNull),
-        breadcrumbs: [
-          { name: "Home", href: "/" },
-          { name: cat.name ?? "", href: `/${slug[0]}` },
-        ],
+        breadcrumbs,
       },
       revalidate: 60,
     };
   }
 
-  // PLP: /[category]/[subcategory]
-  if (slug.length === 2) {
-    const meta = await getCategoryMeta(slug[1]);
-    const cat = meta.categories?.items?.[0];
-    const rootCat = categories?.items?.[0]?.children ?? [];
-    const parent = rootCat.find((c) => c?.url_key === slug[0]);
+  if (!cat.id) return { notFound: true };
 
-    if (!cat?.id) return { notFound: true };
+  const productsData = await getCategoryProducts({
+    filter: { category_id: { eq: String(cat.id) } },
+    pageSize: 12,
+    currentPage: 1,
+  });
 
-    const productsData = await getCategoryProducts({
-      filter: { category_id: { eq: String(cat.id) } },
-      pageSize: 12,
-      currentPage: 1,
-    });
-
-    return {
-      props: {
-        variant: "plp",
-        categories,
-        seo: {
-          title: cat.meta_title || cat.name || "Products",
-          description: cat.meta_description || `Browse ${cat.name} products.`,
-          canonical: `${SITE_URL}/${slug.join("/")}`,
-        },
-        categoryId: cat.id,
-        categoryName: cat.name ?? "",
-        initialProducts: (productsData.products?.items ?? []).filter(notNull),
-        initialTotalPages: productsData.products?.page_info?.total_pages ?? 1,
-        breadcrumbs: [
-          { name: "Home", href: "/" },
-          { name: parent?.name ?? slug[0], href: `/${slug[0]}` },
-          { name: cat.name ?? "", href: `/${slug.join("/")}` },
-        ],
+  return {
+    props: {
+      variant: "plp",
+      categories,
+      seo: {
+        title: cat.meta_title || cat.name || "Products",
+        description: cat.meta_description || `Browse ${cat.name} products.`,
+        canonical,
       },
-      revalidate: 60,
-    };
-  }
-
-  return { notFound: true };
+      categoryId: cat.id,
+      categoryName: cat.name ?? "",
+      initialProducts: (productsData.products?.items ?? []).filter(notNull),
+      initialTotalPages: productsData.products?.page_info?.total_pages ?? 1,
+      breadcrumbs,
+    },
+    revalidate: 60,
+  };
 };

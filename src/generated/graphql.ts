@@ -340,7 +340,7 @@ export type CategoriesQuery = {
 };
 
 export type CategoryLandingQueryVariables = Exact<{
-  urlKey: string;
+  urlPath: string;
 }>;
 
 export type CategoryLandingQuery = {
@@ -447,22 +447,6 @@ export type CategoryLandingQuery = {
           | null
         > | null;
       } | null;
-    } | null> | null;
-  } | null;
-};
-
-export type CategoryMetaQueryVariables = Exact<{
-  urlKey: string;
-}>;
-
-export type CategoryMetaQuery = {
-  categories: {
-    items: Array<{
-      id: number | null;
-      name: string | null;
-      url_key: string | null;
-      meta_title: string | null;
-      meta_description: string | null;
     } | null> | null;
   } | null;
 };
@@ -1085,7 +1069,7 @@ export const CategoryLandingDocument = {
           kind: "VariableDefinition",
           variable: {
             kind: "Variable",
-            name: { kind: "Name", value: "urlKey" },
+            name: { kind: "Name", value: "urlPath" },
           },
           type: {
             kind: "NonNullType",
@@ -1111,7 +1095,7 @@ export const CategoryLandingDocument = {
                   fields: [
                     {
                       kind: "ObjectField",
-                      name: { kind: "Name", value: "url_key" },
+                      name: { kind: "Name", value: "url_path" },
                       value: {
                         kind: "ObjectValue",
                         fields: [
@@ -1120,7 +1104,7 @@ export const CategoryLandingDocument = {
                             name: { kind: "Name", value: "eq" },
                             value: {
                               kind: "Variable",
-                              name: { kind: "Name", value: "urlKey" },
+                              name: { kind: "Name", value: "urlPath" },
                             },
                           },
                         ],
@@ -1303,97 +1287,6 @@ export const CategoryLandingDocument = {
   CategoryLandingQuery,
   CategoryLandingQueryVariables
 >;
-export const CategoryMetaDocument = {
-  kind: "Document",
-  definitions: [
-    {
-      kind: "OperationDefinition",
-      operation: "query",
-      name: { kind: "Name", value: "CategoryMeta" },
-      variableDefinitions: [
-        {
-          kind: "VariableDefinition",
-          variable: {
-            kind: "Variable",
-            name: { kind: "Name", value: "urlKey" },
-          },
-          type: {
-            kind: "NonNullType",
-            type: {
-              kind: "NamedType",
-              name: { kind: "Name", value: "String" },
-            },
-          },
-        },
-      ],
-      selectionSet: {
-        kind: "SelectionSet",
-        selections: [
-          {
-            kind: "Field",
-            name: { kind: "Name", value: "categories" },
-            arguments: [
-              {
-                kind: "Argument",
-                name: { kind: "Name", value: "filters" },
-                value: {
-                  kind: "ObjectValue",
-                  fields: [
-                    {
-                      kind: "ObjectField",
-                      name: { kind: "Name", value: "url_key" },
-                      value: {
-                        kind: "ObjectValue",
-                        fields: [
-                          {
-                            kind: "ObjectField",
-                            name: { kind: "Name", value: "eq" },
-                            value: {
-                              kind: "Variable",
-                              name: { kind: "Name", value: "urlKey" },
-                            },
-                          },
-                        ],
-                      },
-                    },
-                  ],
-                },
-              },
-            ],
-            selectionSet: {
-              kind: "SelectionSet",
-              selections: [
-                {
-                  kind: "Field",
-                  name: { kind: "Name", value: "items" },
-                  selectionSet: {
-                    kind: "SelectionSet",
-                    selections: [
-                      { kind: "Field", name: { kind: "Name", value: "id" } },
-                      { kind: "Field", name: { kind: "Name", value: "name" } },
-                      {
-                        kind: "Field",
-                        name: { kind: "Name", value: "url_key" },
-                      },
-                      {
-                        kind: "Field",
-                        name: { kind: "Name", value: "meta_title" },
-                      },
-                      {
-                        kind: "Field",
-                        name: { kind: "Name", value: "meta_description" },
-                      },
-                    ],
-                  },
-                },
-              ],
-            },
-          },
-        ],
-      },
-    },
-  ],
-} as unknown as DocumentNode<CategoryMetaQuery, CategoryMetaQueryVariables>;
 export const CategoryProductsDocument = {
   kind: "Document",
   definitions: [

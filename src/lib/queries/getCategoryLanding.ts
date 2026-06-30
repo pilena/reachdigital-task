@@ -5,13 +5,13 @@ import {
   CategoryLandingQueryVariables,
 } from "@/generated/graphql";
 
-export async function getCategoryLanding(urlKey: string) {
+export async function getCategoryLanding(urlPath: string) {
   const { data } = await apolloClient.query<
     CategoryLandingQuery,
     CategoryLandingQueryVariables
   >({
     query: CategoryLandingDocument,
-    variables: { urlKey },
+    variables: { urlPath },
   });
 
   return data;

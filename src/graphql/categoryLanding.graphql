@@ -1,5 +1,5 @@
-query CategoryLanding($urlKey: String!) {
-  categories(filters: { url_key: { eq: $urlKey } }) {
+query CategoryLanding($urlPath: String!) {
+  categories(filters: { url_path: { eq: $urlPath } }) {
     items {
       id
       name
