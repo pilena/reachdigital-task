@@ -5,14 +5,7 @@ import Typography from "@mui/material/Typography";
 import NextLink from "next/link";
 import ProductCarousel from "@/components/product/ProductCarousel";
 import { Product } from "@/types/product";
-
-type Subcategory = {
-  uid: string;
-  name: string | null;
-  url_key: string | null;
-  url_path: string | null;
-  product_count: number | null;
-};
+import { Subcategory } from "@/types/subcategory";
 
 type CategoryLandingProps = {
   name: string;
