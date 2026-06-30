@@ -3,9 +3,7 @@ import Link from "next/link";
 import MuiBreadcrumbs from "@mui/material/Breadcrumbs";
 import MuiLink from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
-
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://reachdigital-task.vercel.app";
+import { SITE_URL } from "@/lib/config";
 
 export type Crumb = { name: string; href: string };
 

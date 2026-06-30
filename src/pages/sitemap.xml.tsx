@@ -2,8 +2,7 @@ import { GetServerSideProps } from "next";
 import { apolloClient } from "@/lib/apolloClient";
 import { CategoriesDocument, CategoriesQuery } from "@/generated/graphql";
 import { getHomepageProducts } from "@/lib/queries/getHomepageProducts";
-
-const SITE_URL = "https://reachdigital-task.vercel.app";
+import { SITE_URL } from "@/lib/config";
 
 const toUrl = (loc: string) => `<url><loc>${SITE_URL}${loc}</loc></url>`;
 

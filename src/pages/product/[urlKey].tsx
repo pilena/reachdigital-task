@@ -9,8 +9,7 @@ import { ProductDetail as ProductDetailType } from "@/types/productDetail";
 import Layout from "@/components/layout/Layout";
 import Seo from "@/components/common/Seo";
 import ProductDetail from "@/components/product/ProductDetail";
-
-const SITE_URL = "https://reachdigital-task.vercel.app";
+import { SITE_URL } from "@/lib/config";
 
 const notNull = <T,>(x: T): x is NonNullable<T> => x != null;
 
