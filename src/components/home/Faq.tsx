@@ -53,7 +53,7 @@ export default function Faq() {
           }}
         />
       </Head>
-      <Container maxWidth="md">
+      <Container maxWidth="lg">
         <Typography
           variant="h4"
           component="h2"
