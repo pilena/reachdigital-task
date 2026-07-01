@@ -64,7 +64,7 @@ export default function FeatureSplit() {
                   color: "var(--text)",
                   textDecoration: "none",
                   width: "fit-content",
-                  "&:hover": { textDecoration: "underline", },
+                  "&:hover": { textDecoration: "underline" },
                   transition: "color 0.25s ease",
                 }}
               >

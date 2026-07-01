@@ -7,16 +7,39 @@ import AutoAwesomeOutlinedIcon from "@mui/icons-material/AutoAwesomeOutlined";
 import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined";
 
 const usps = [
-  { icon: PaymentsOutlinedIcon, title: "Free shipping over $50", description: "Delivered in 3-5 days" },
-  { icon: ReplayOutlinedIcon, title: "30-day returns", description: "Didn't fit? Send them back free" },
-  { icon: AutoAwesomeOutlinedIcon, title: "Combed-cotton comfort", description: "Soft, breathable, built to last" },
-  { icon: Inventory2OutlinedIcon, title: "Wash-tested colours", description: "No fading, no stretching out" },
+  {
+    icon: PaymentsOutlinedIcon,
+    title: "Free shipping over $50",
+    description: "Delivered in 3-5 days",
+  },
+  {
+    icon: ReplayOutlinedIcon,
+    title: "30-day returns",
+    description: "Didn't fit? Send them back free",
+  },
+  {
+    icon: AutoAwesomeOutlinedIcon,
+    title: "Combed-cotton comfort",
+    description: "Soft, breathable, built to last",
+  },
+  {
+    icon: Inventory2OutlinedIcon,
+    title: "Wash-tested colours",
+    description: "No fading, no stretching out",
+  },
 ];
 
 export default function UspStrip() {
   return (
     <Box component="section" aria-label="Why shop with us" sx={{ py: 2 }}>
-      <Container maxWidth="lg" sx={{backgroundColor: "var(--surface)", borderRadius: "16px", border: "1px solid var(--border)"}}>
+      <Container
+        maxWidth="lg"
+        sx={{
+          backgroundColor: "var(--surface)",
+          borderRadius: "16px",
+          border: "1px solid var(--border)",
+        }}
+      >
         <Box
           component="ul"
           sx={{
@@ -24,7 +47,11 @@ export default function UspStrip() {
             p: { xs: 3, md: 4 },
             m: 0,
             display: "grid",
-            gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr", md: "repeat(4, 1fr)" },
+            gridTemplateColumns: {
+              xs: "1fr",
+              sm: "1fr 1fr",
+              md: "repeat(4, 1fr)",
+            },
             gap: { xs: 4, md: 3 },
             bgcolor: "var(--surface)",
             border: "1px solid var(--border)",
