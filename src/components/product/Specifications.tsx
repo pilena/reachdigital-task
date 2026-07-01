@@ -29,11 +29,12 @@ export default function Specifications({ rows }: { rows: SpecRow[] }) {
                   width: "40%",
                   borderColor: "#333",
                   color: "#fff",
+                  fontSize: "18px",
                 }}
               >
                 {r.label}
               </TableCell>
-              <TableCell sx={{ borderColor: "#333", color: "#ccc" }}>
+              <TableCell sx={{ borderColor: "#333", color: "#ccc", fontSize: "18px" }}>
                 {r.value}
               </TableCell>
             </TableRow>

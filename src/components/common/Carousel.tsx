@@ -11,6 +11,7 @@ type CarouselProps = {
   title?: string;
   slideBasis?: { xs: string; sm?: string; md?: string };
   ariaLabel?: string;
+  noIconButtons?: boolean;
 };
 
 export default function Carousel({
@@ -18,6 +19,7 @@ export default function Carousel({
   title,
   slideBasis = { xs: "80%", sm: "40%", md: "25%" },
   ariaLabel = "Carousel",
+  noIconButtons = false,
 }: CarouselProps) {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: "start",
@@ -48,7 +50,7 @@ export default function Carousel({
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          mb: 3,
+          mb: noIconButtons ? 0 : 3,
           gap: 2,
         }}
       >
@@ -60,24 +62,26 @@ export default function Carousel({
           <span />
         )}
 
-        <Box sx={{ display: "flex", gap: 1, flexShrink: 0 }}>
-          <IconButton
-            aria-label="Previous slide"
-            onClick={() => emblaApi?.scrollPrev()}
-            disabled={!canPrev}
-            sx={{ border: "1px solid", borderColor: "divider" }}
-          >
-            <ChevronLeftIcon />
-          </IconButton>
-          <IconButton
-            aria-label="Next slide"
-            onClick={() => emblaApi?.scrollNext()}
-            disabled={!canNext}
-            sx={{ border: "1px solid", borderColor: "divider" }}
-          >
-            <ChevronRightIcon />
-          </IconButton>
-        </Box>
+        {!noIconButtons && (
+          <Box sx={{ display: "flex", gap: 1, flexShrink: 0 }}>
+            <IconButton
+              aria-label="Previous slide"
+              onClick={() => emblaApi?.scrollPrev()}
+              disabled={!canPrev}
+              sx={{ border: "1px solid", borderColor: "divider" }}
+            >
+              <ChevronLeftIcon />
+            </IconButton>
+            <IconButton
+              aria-label="Next slide"
+              onClick={() => emblaApi?.scrollNext()}
+              disabled={!canNext}
+              sx={{ border: "1px solid", borderColor: "divider" }}
+            >
+              <ChevronRightIcon />
+            </IconButton>
+          </Box>
+        )}
       </Box>
 
       <Box ref={emblaRef} sx={{ overflow: "hidden" }}>

@@ -28,7 +28,6 @@ export default function ProductDetail({
 
   const allSelected = product.options.every((o) => selected[o.attributeCode]);
 
-  // Resolve the chosen variant by matching option labels to variant attributes.
   const selectedVariant = useMemo(() => {
     if (!product.isConfigurable || !allSelected) return null;
 
@@ -130,7 +129,7 @@ export default function ProductDetail({
               sx={{
                 fontSize: 28,
                 fontWeight: 700,
-                color: onSale ? "error.main" : "inherit",
+                color: onSale ? "error.main" : "primary.main",
               }}
             >
               {formatPrice(displayPrice, product.currency)}
@@ -152,7 +151,7 @@ export default function ProductDetail({
 
           {product.shortDescriptionHtml && (
             <Box
-              sx={{ color: "#bbb" }}
+              sx={{ color: "#bbb", mt: "0px!important" }}
               dangerouslySetInnerHTML={{ __html: product.shortDescriptionHtml }}
             />
           )}
@@ -191,18 +190,12 @@ export default function ProductDetail({
               size="large"
               disabled={!canAdd}
               onClick={handleAdd}
-              sx={{
-                bgcolor: "#fff",
-                color: "#000",
-                px: 4,
-                "&:hover": { bgcolor: "#ddd" },
-              }}
             >
               {inStock ? "Add to Cart" : "Out of Stock"}
             </Button>
             {product.isConfigurable && !allSelected && (
               <Typography sx={{ color: "#888" }}>
-                Please select all options
+                Please select an option
               </Typography>
             )}
             <Box role="status" aria-live="polite">

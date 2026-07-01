@@ -20,7 +20,7 @@ export default function ProductGallery({ images, productName }: Props) {
   }
 
   return (
-    <Carousel ariaLabel={`${productName} images`} slideBasis={{ xs: "100%" }}>
+    <Carousel ariaLabel={`${productName} images`} slideBasis={{ xs: "100%" }} noIconButtons>
       {images.map((img, i) => (
         <Box
           key={img.url}
@@ -29,7 +29,7 @@ export default function ProductGallery({ images, productName }: Props) {
             aspectRatio: "1 / 1",
             width: "100%",
             bgcolor: "#fff",
-            borderRadius: 1,
+            borderRadius: 3,
             overflow: "hidden",
           }}
         >
