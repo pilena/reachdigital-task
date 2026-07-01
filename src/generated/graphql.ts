@@ -759,6 +759,7 @@ export type ProductQuery = {
           meta_title: string | null;
           meta_description: string | null;
           categories: Array<{
+            uid: string;
             name: string | null;
             url_path: string | null;
             level: number | null;
@@ -837,6 +838,7 @@ export type ProductQuery = {
             } | null;
           } | null> | null;
           categories: Array<{
+            uid: string;
             name: string | null;
             url_path: string | null;
             level: number | null;
@@ -880,6 +882,7 @@ export type ProductQuery = {
           meta_title: string | null;
           meta_description: string | null;
           categories: Array<{
+            uid: string;
             name: string | null;
             url_path: string | null;
             level: number | null;
@@ -924,6 +927,7 @@ export type ProductQuery = {
           meta_title: string | null;
           meta_description: string | null;
           categories: Array<{
+            uid: string;
             name: string | null;
             url_path: string | null;
             level: number | null;
@@ -968,6 +972,7 @@ export type ProductQuery = {
           meta_title: string | null;
           meta_description: string | null;
           categories: Array<{
+            uid: string;
             name: string | null;
             url_path: string | null;
             level: number | null;
@@ -1011,6 +1016,7 @@ export type ProductQuery = {
           meta_title: string | null;
           meta_description: string | null;
           categories: Array<{
+            uid: string;
             name: string | null;
             url_path: string | null;
             level: number | null;
@@ -1983,6 +1989,10 @@ export const ProductDocument = {
                         selectionSet: {
                           kind: "SelectionSet",
                           selections: [
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "uid" },
+                            },
                             {
                               kind: "Field",
                               name: { kind: "Name", value: "name" },

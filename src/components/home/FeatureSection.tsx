@@ -74,10 +74,7 @@ export default function FeatureSection({
               </Typography>
 
               {description && (
-                <Typography
-                  component="p"
-                  sx={{ mt: 1 }}
-                >
+                <Typography component="p" sx={{ mt: 1 }}>
                   {description}
                 </Typography>
               )}

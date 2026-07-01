@@ -43,6 +43,7 @@ export function mapProduct(item: ProductItem): ProductDetail {
     metaTitle: item.meta_title ?? null,
     metaDescription: item.meta_description ?? null,
     category,
+    categoryUid: deepest?.uid ?? null,
   };
 
   if (item.__typename === "ConfigurableProduct") {

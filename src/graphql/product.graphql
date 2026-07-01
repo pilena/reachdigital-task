@@ -10,6 +10,7 @@ query Product($urlKey: String!) {
       meta_title
       meta_description
       categories {
+        uid
         name
         url_path
         level
