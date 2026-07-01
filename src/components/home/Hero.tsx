@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -71,9 +72,13 @@ export default function Hero() {
             src="https://eu-central-1.graphassets.com/AGpzN1gCxSsmrRI0YBrr7z/UNmtIZmWSgmnpUAWcAk0"
             type="video/mp4"
           />
-          <img
+          <Image
             src="/hero-image.webp"
             alt="New season collection"
+            width={1920}
+            height={1080}
+            priority
+            quality={100}
             style={{ width: "100%", height: "100%", objectFit: "cover" }}
           />
         </Box>
