@@ -30,6 +30,13 @@ query CategoryProducts(
             value
             currency
           }
+          final_price {
+            value
+            currency
+          }
+          discount {
+            percent_off
+          }
         }
       }
     }

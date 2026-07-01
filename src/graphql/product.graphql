@@ -31,6 +31,13 @@ query Product($urlKey: String!) {
             value
             currency
           }
+          final_price {
+            value
+            currency
+          }
+          discount {
+            percent_off
+          }
         }
       }
       ... on PhysicalProductInterface {
@@ -61,6 +68,13 @@ query Product($urlKey: String!) {
                 regular_price {
                   value
                   currency
+                }
+                final_price {
+                  value
+                  currency
+                }
+                discount {
+                  percent_off
                 }
               }
             }

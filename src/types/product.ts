@@ -12,6 +12,13 @@ export type Product = {
         value: number | null;
         currency: string | null;
       };
+      final_price: {
+        value: number | null;
+        currency: string | null;
+      };
+      discount: {
+        percent_off: number | null;
+      } | null;
     };
   };
 };

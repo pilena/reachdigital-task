@@ -35,4 +35,6 @@ export type ProductDetail = {
   metaTitle: string | null;
   metaDescription: string | null;
   category: { name: string; urlPath: string } | null;
+  finalPrice: number | null;
+  discountPercent: number | null;
 };

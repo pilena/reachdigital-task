@@ -6,6 +6,7 @@ import Box from "@mui/material/Box";
 import Image from "next/image";
 import NextLink from "next/link";
 import { Product } from "@/types/product";
+import Chip from "@mui/material/Chip";
 
 type ProductCardProps = {
   product: Product;
@@ -20,10 +21,13 @@ function formatPrice(value: number | null, currency: string | null) {
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
-  const price = formatPrice(
-    product.price_range.minimum_price.regular_price.value,
-    product.price_range.minimum_price.regular_price.currency,
-  );
+  const minimnumPrice = product.price_range.minimum_price;
+  const regularPrice = minimnumPrice.regular_price.value;
+  const finalPrice = minimnumPrice.final_price.value ?? regularPrice;
+  const currency = minimnumPrice.regular_price.currency;
+  const onSale =
+    finalPrice != null && regularPrice != null && finalPrice < regularPrice;
+  const discountPercent = minimnumPrice.discount?.percent_off ?? null;
 
   return (
     <Card
@@ -63,17 +67,44 @@ export default function ProductCard({ product }: ProductCardProps) {
               style={{ objectFit: "cover" }}
             />
           )}
+          {onSale && discountPercent != null && (
+            <Chip
+              label={`-${Math.round(discountPercent)}%`}
+              color="error"
+              size="small"
+              sx={{ position: "absolute", top: 8, left: 8, fontWeight: 700 }}
+            />
+          )}
         </Box>
         <CardContent sx={{ flexGrow: 1 }}>
           <Typography variant="body1" component="h3" sx={{ fontWeight: 500 }}>
             {product.name}
           </Typography>
-          <Typography
-            variant="body1"
-            sx={{ mt: 1, fontWeight: 700, color: "primary.dark" }}
-          >
-            {price}
-          </Typography>
+          {onSale ? (
+            <Box
+              sx={{ mt: 1, display: "flex", alignItems: "baseline", gap: 1 }}
+            >
+              <Typography
+                variant="body1"
+                sx={{ fontWeight: 700, color: "error.main" }}
+              >
+                {formatPrice(finalPrice, currency)}
+              </Typography>
+              <Typography
+                variant="body2"
+                sx={{ textDecoration: "line-through", color: "text.secondary" }}
+              >
+                {formatPrice(regularPrice, currency)}
+              </Typography>
+            </Box>
+          ) : (
+            <Typography
+              variant="body1"
+              sx={{ mt: 1, fontWeight: 700, color: "primary.dark" }}
+            >
+              {formatPrice(regularPrice, currency)}
+            </Typography>
+          )}
         </CardContent>
       </CardActionArea>
     </Card>

@@ -13,7 +13,8 @@ export function mapProduct(item: ProductItem): ProductDetail {
     .map((m) => ({ url: m.url ?? "", label: m.label ?? "" }))
     .filter((m) => m.url);
 
-  const price = item.price_range.minimum_price.regular_price;
+  const minimumPrice = item.price_range.minimum_price;
+  const price = minimumPrice.regular_price;
 
   const cats = (item.categories ?? []).filter(notNull);
   const deepest = cats.reduce<(typeof cats)[number] | null>(
@@ -33,6 +34,8 @@ export function mapProduct(item: ProductItem): ProductDetail {
     stockStatus: item.stock_status ?? null,
     price: price.value ?? 0,
     currency: price.currency ?? "USD",
+    finalPrice: minimumPrice.final_price?.value ?? null,
+    discountPercent: minimumPrice.discount?.percent_off ?? null,
     descriptionHtml: item.description?.html ?? null,
     shortDescriptionHtml: item.short_description?.html ?? null,
     images,

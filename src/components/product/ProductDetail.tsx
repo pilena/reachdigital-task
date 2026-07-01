@@ -45,7 +45,10 @@ export default function ProductDetail({
     );
   }, [product, selected, allSelected]);
 
-  const displayPrice = selectedVariant?.price ?? product.price;
+  const baseFinal = product.finalPrice ?? product.price;
+  const onSale = !selectedVariant && baseFinal < product.price;
+  const displayPrice =
+    selectedVariant?.price ?? (onSale ? baseFinal : product.price);
   const stockStatus = selectedVariant?.stockStatus ?? product.stockStatus;
   const inStock = stockStatus !== "OUT_OF_STOCK";
 
@@ -115,9 +118,37 @@ export default function ProductDetail({
             </Typography>
           </Box>
 
-          <Typography sx={{ fontSize: 28, fontWeight: 700 }}>
-            {formatPrice(displayPrice, product.currency)}
-          </Typography>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: 1.5,
+              flexWrap: "wrap",
+            }}
+          >
+            <Typography
+              sx={{
+                fontSize: 28,
+                fontWeight: 700,
+                color: onSale ? "error.main" : "inherit",
+              }}
+            >
+              {formatPrice(displayPrice, product.currency)}
+            </Typography>
+            {onSale && (
+              <>
+                <Typography
+                  sx={{
+                    fontSize: 20,
+                    textDecoration: "line-through",
+                    color: "#888",
+                  }}
+                >
+                  {formatPrice(product.price, product.currency)}
+                </Typography>
+              </>
+            )}
+          </Box>
 
           {product.shortDescriptionHtml && (
             <Box

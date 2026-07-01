@@ -372,6 +372,11 @@ export type CategoryLandingQuery = {
                     value: number | null;
                     currency: CurrencyEnum | null;
                   };
+                  final_price: {
+                    value: number | null;
+                    currency: CurrencyEnum | null;
+                  };
+                  discount: { percent_off: number | null } | null;
                 };
               };
             }
@@ -386,6 +391,11 @@ export type CategoryLandingQuery = {
                     value: number | null;
                     currency: CurrencyEnum | null;
                   };
+                  final_price: {
+                    value: number | null;
+                    currency: CurrencyEnum | null;
+                  };
+                  discount: { percent_off: number | null } | null;
                 };
               };
             }
@@ -400,6 +410,11 @@ export type CategoryLandingQuery = {
                     value: number | null;
                     currency: CurrencyEnum | null;
                   };
+                  final_price: {
+                    value: number | null;
+                    currency: CurrencyEnum | null;
+                  };
+                  discount: { percent_off: number | null } | null;
                 };
               };
             }
@@ -414,6 +429,11 @@ export type CategoryLandingQuery = {
                     value: number | null;
                     currency: CurrencyEnum | null;
                   };
+                  final_price: {
+                    value: number | null;
+                    currency: CurrencyEnum | null;
+                  };
+                  discount: { percent_off: number | null } | null;
                 };
               };
             }
@@ -428,6 +448,11 @@ export type CategoryLandingQuery = {
                     value: number | null;
                     currency: CurrencyEnum | null;
                   };
+                  final_price: {
+                    value: number | null;
+                    currency: CurrencyEnum | null;
+                  };
+                  discount: { percent_off: number | null } | null;
                 };
               };
             }
@@ -442,6 +467,11 @@ export type CategoryLandingQuery = {
                     value: number | null;
                     currency: CurrencyEnum | null;
                   };
+                  final_price: {
+                    value: number | null;
+                    currency: CurrencyEnum | null;
+                  };
+                  discount: { percent_off: number | null } | null;
                 };
               };
             }
@@ -479,6 +509,11 @@ export type CategoryProductsQuery = {
                 value: number | null;
                 currency: CurrencyEnum | null;
               };
+              final_price: {
+                value: number | null;
+                currency: CurrencyEnum | null;
+              };
+              discount: { percent_off: number | null } | null;
             };
           };
         }
@@ -493,6 +528,11 @@ export type CategoryProductsQuery = {
                 value: number | null;
                 currency: CurrencyEnum | null;
               };
+              final_price: {
+                value: number | null;
+                currency: CurrencyEnum | null;
+              };
+              discount: { percent_off: number | null } | null;
             };
           };
         }
@@ -507,6 +547,11 @@ export type CategoryProductsQuery = {
                 value: number | null;
                 currency: CurrencyEnum | null;
               };
+              final_price: {
+                value: number | null;
+                currency: CurrencyEnum | null;
+              };
+              discount: { percent_off: number | null } | null;
             };
           };
         }
@@ -521,6 +566,11 @@ export type CategoryProductsQuery = {
                 value: number | null;
                 currency: CurrencyEnum | null;
               };
+              final_price: {
+                value: number | null;
+                currency: CurrencyEnum | null;
+              };
+              discount: { percent_off: number | null } | null;
             };
           };
         }
@@ -535,6 +585,11 @@ export type CategoryProductsQuery = {
                 value: number | null;
                 currency: CurrencyEnum | null;
               };
+              final_price: {
+                value: number | null;
+                currency: CurrencyEnum | null;
+              };
+              discount: { percent_off: number | null } | null;
             };
           };
         }
@@ -549,6 +604,11 @@ export type CategoryProductsQuery = {
                 value: number | null;
                 currency: CurrencyEnum | null;
               };
+              final_price: {
+                value: number | null;
+                currency: CurrencyEnum | null;
+              };
+              discount: { percent_off: number | null } | null;
             };
           };
         }
@@ -573,6 +633,11 @@ export type HomepageProductsQuery = {
                 value: number | null;
                 currency: CurrencyEnum | null;
               };
+              final_price: {
+                value: number | null;
+                currency: CurrencyEnum | null;
+              };
+              discount: { percent_off: number | null } | null;
             };
           };
         }
@@ -587,6 +652,11 @@ export type HomepageProductsQuery = {
                 value: number | null;
                 currency: CurrencyEnum | null;
               };
+              final_price: {
+                value: number | null;
+                currency: CurrencyEnum | null;
+              };
+              discount: { percent_off: number | null } | null;
             };
           };
         }
@@ -601,6 +671,11 @@ export type HomepageProductsQuery = {
                 value: number | null;
                 currency: CurrencyEnum | null;
               };
+              final_price: {
+                value: number | null;
+                currency: CurrencyEnum | null;
+              };
+              discount: { percent_off: number | null } | null;
             };
           };
         }
@@ -615,6 +690,11 @@ export type HomepageProductsQuery = {
                 value: number | null;
                 currency: CurrencyEnum | null;
               };
+              final_price: {
+                value: number | null;
+                currency: CurrencyEnum | null;
+              };
+              discount: { percent_off: number | null } | null;
             };
           };
         }
@@ -629,6 +709,11 @@ export type HomepageProductsQuery = {
                 value: number | null;
                 currency: CurrencyEnum | null;
               };
+              final_price: {
+                value: number | null;
+                currency: CurrencyEnum | null;
+              };
+              discount: { percent_off: number | null } | null;
             };
           };
         }
@@ -643,6 +728,11 @@ export type HomepageProductsQuery = {
                 value: number | null;
                 currency: CurrencyEnum | null;
               };
+              final_price: {
+                value: number | null;
+                currency: CurrencyEnum | null;
+              };
+              discount: { percent_off: number | null } | null;
             };
           };
         }
@@ -694,6 +784,11 @@ export type ProductQuery = {
                 value: number | null;
                 currency: CurrencyEnum | null;
               };
+              final_price: {
+                value: number | null;
+                currency: CurrencyEnum | null;
+              };
+              discount: { percent_off: number | null } | null;
             };
           };
         }
@@ -732,6 +827,11 @@ export type ProductQuery = {
                     value: number | null;
                     currency: CurrencyEnum | null;
                   };
+                  final_price: {
+                    value: number | null;
+                    currency: CurrencyEnum | null;
+                  };
+                  discount: { percent_off: number | null } | null;
                 };
               };
             } | null;
@@ -762,6 +862,11 @@ export type ProductQuery = {
                 value: number | null;
                 currency: CurrencyEnum | null;
               };
+              final_price: {
+                value: number | null;
+                currency: CurrencyEnum | null;
+              };
+              discount: { percent_off: number | null } | null;
             };
           };
         }
@@ -800,6 +905,11 @@ export type ProductQuery = {
                 value: number | null;
                 currency: CurrencyEnum | null;
               };
+              final_price: {
+                value: number | null;
+                currency: CurrencyEnum | null;
+              };
+              discount: { percent_off: number | null } | null;
             };
           };
         }
@@ -839,6 +949,11 @@ export type ProductQuery = {
                 value: number | null;
                 currency: CurrencyEnum | null;
               };
+              final_price: {
+                value: number | null;
+                currency: CurrencyEnum | null;
+              };
+              discount: { percent_off: number | null } | null;
             };
           };
         }
@@ -878,6 +993,11 @@ export type ProductQuery = {
                 value: number | null;
                 currency: CurrencyEnum | null;
               };
+              final_price: {
+                value: number | null;
+                currency: CurrencyEnum | null;
+              };
+              discount: { percent_off: number | null } | null;
             };
           };
         }
@@ -916,6 +1036,11 @@ export type ProductQuery = {
                 value: number | null;
                 currency: CurrencyEnum | null;
               };
+              final_price: {
+                value: number | null;
+                currency: CurrencyEnum | null;
+              };
+              discount: { percent_off: number | null } | null;
             };
           };
         }
@@ -1266,6 +1391,51 @@ export const CategoryLandingDocument = {
                                                   ],
                                                 },
                                               },
+                                              {
+                                                kind: "Field",
+                                                name: {
+                                                  kind: "Name",
+                                                  value: "final_price",
+                                                },
+                                                selectionSet: {
+                                                  kind: "SelectionSet",
+                                                  selections: [
+                                                    {
+                                                      kind: "Field",
+                                                      name: {
+                                                        kind: "Name",
+                                                        value: "value",
+                                                      },
+                                                    },
+                                                    {
+                                                      kind: "Field",
+                                                      name: {
+                                                        kind: "Name",
+                                                        value: "currency",
+                                                      },
+                                                    },
+                                                  ],
+                                                },
+                                              },
+                                              {
+                                                kind: "Field",
+                                                name: {
+                                                  kind: "Name",
+                                                  value: "discount",
+                                                },
+                                                selectionSet: {
+                                                  kind: "SelectionSet",
+                                                  selections: [
+                                                    {
+                                                      kind: "Field",
+                                                      name: {
+                                                        kind: "Name",
+                                                        value: "percent_off",
+                                                      },
+                                                    },
+                                                  ],
+                                                },
+                                              },
                                             ],
                                           },
                                         },
@@ -1477,6 +1647,48 @@ export const CategoryProductsDocument = {
                                       ],
                                     },
                                   },
+                                  {
+                                    kind: "Field",
+                                    name: {
+                                      kind: "Name",
+                                      value: "final_price",
+                                    },
+                                    selectionSet: {
+                                      kind: "SelectionSet",
+                                      selections: [
+                                        {
+                                          kind: "Field",
+                                          name: {
+                                            kind: "Name",
+                                            value: "value",
+                                          },
+                                        },
+                                        {
+                                          kind: "Field",
+                                          name: {
+                                            kind: "Name",
+                                            value: "currency",
+                                          },
+                                        },
+                                      ],
+                                    },
+                                  },
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "discount" },
+                                    selectionSet: {
+                                      kind: "SelectionSet",
+                                      selections: [
+                                        {
+                                          kind: "Field",
+                                          name: {
+                                            kind: "Name",
+                                            value: "percent_off",
+                                          },
+                                        },
+                                      ],
+                                    },
+                                  },
                                 ],
                               },
                             },
@@ -1609,6 +1821,48 @@ export const HomepageProductsDocument = {
                                           name: {
                                             kind: "Name",
                                             value: "currency",
+                                          },
+                                        },
+                                      ],
+                                    },
+                                  },
+                                  {
+                                    kind: "Field",
+                                    name: {
+                                      kind: "Name",
+                                      value: "final_price",
+                                    },
+                                    selectionSet: {
+                                      kind: "SelectionSet",
+                                      selections: [
+                                        {
+                                          kind: "Field",
+                                          name: {
+                                            kind: "Name",
+                                            value: "value",
+                                          },
+                                        },
+                                        {
+                                          kind: "Field",
+                                          name: {
+                                            kind: "Name",
+                                            value: "currency",
+                                          },
+                                        },
+                                      ],
+                                    },
+                                  },
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "discount" },
+                                    selectionSet: {
+                                      kind: "SelectionSet",
+                                      selections: [
+                                        {
+                                          kind: "Field",
+                                          name: {
+                                            kind: "Name",
+                                            value: "percent_off",
                                           },
                                         },
                                       ],
@@ -1829,6 +2083,48 @@ export const ProductDocument = {
                                       ],
                                     },
                                   },
+                                  {
+                                    kind: "Field",
+                                    name: {
+                                      kind: "Name",
+                                      value: "final_price",
+                                    },
+                                    selectionSet: {
+                                      kind: "SelectionSet",
+                                      selections: [
+                                        {
+                                          kind: "Field",
+                                          name: {
+                                            kind: "Name",
+                                            value: "value",
+                                          },
+                                        },
+                                        {
+                                          kind: "Field",
+                                          name: {
+                                            kind: "Name",
+                                            value: "currency",
+                                          },
+                                        },
+                                      ],
+                                    },
+                                  },
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "discount" },
+                                    selectionSet: {
+                                      kind: "SelectionSet",
+                                      selections: [
+                                        {
+                                          kind: "Field",
+                                          name: {
+                                            kind: "Name",
+                                            value: "percent_off",
+                                          },
+                                        },
+                                      ],
+                                    },
+                                  },
                                 ],
                               },
                             },
@@ -2003,6 +2299,52 @@ export const ProductDocument = {
                                                             name: {
                                                               kind: "Name",
                                                               value: "currency",
+                                                            },
+                                                          },
+                                                        ],
+                                                      },
+                                                    },
+                                                    {
+                                                      kind: "Field",
+                                                      name: {
+                                                        kind: "Name",
+                                                        value: "final_price",
+                                                      },
+                                                      selectionSet: {
+                                                        kind: "SelectionSet",
+                                                        selections: [
+                                                          {
+                                                            kind: "Field",
+                                                            name: {
+                                                              kind: "Name",
+                                                              value: "value",
+                                                            },
+                                                          },
+                                                          {
+                                                            kind: "Field",
+                                                            name: {
+                                                              kind: "Name",
+                                                              value: "currency",
+                                                            },
+                                                          },
+                                                        ],
+                                                      },
+                                                    },
+                                                    {
+                                                      kind: "Field",
+                                                      name: {
+                                                        kind: "Name",
+                                                        value: "discount",
+                                                      },
+                                                      selectionSet: {
+                                                        kind: "SelectionSet",
+                                                        selections: [
+                                                          {
+                                                            kind: "Field",
+                                                            name: {
+                                                              kind: "Name",
+                                                              value:
+                                                                "percent_off",
                                                             },
                                                           },
                                                         ],

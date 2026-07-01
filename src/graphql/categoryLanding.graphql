@@ -29,6 +29,13 @@ query CategoryLanding($urlPath: String!) {
                 value
                 currency
               }
+              final_price {
+                value
+                currency
+              }
+              discount {
+                percent_off
+              }
             }
           }
         }
