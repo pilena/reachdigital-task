@@ -130,7 +130,7 @@ export default function ProductDetail({
               sx={{
                 fontSize: 28,
                 fontWeight: 700,
-                color: onSale ? "error.main" : "primary.main",
+                color: onSale ? "primary.dark" : "primary.main",
               }}
             >
               {formatPrice(displayPrice, product.currency)}

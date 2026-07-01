@@ -70,7 +70,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           {onSale && discountPercent != null && (
             <Chip
               label={`-${Math.round(discountPercent)}%`}
-              color="error"
+              color="primary"
               size="small"
               sx={{ position: "absolute", top: 8, left: 8, fontWeight: 700 }}
             />
@@ -86,7 +86,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             >
               <Typography
                 variant="body1"
-                sx={{ fontWeight: 700, color: "error.main" }}
+                sx={{ fontWeight: 700, color: "primary.dark" }}
               >
                 {formatPrice(finalPrice, currency)}
               </Typography>

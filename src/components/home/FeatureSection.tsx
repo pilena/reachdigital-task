@@ -28,7 +28,11 @@ export default function FeatureSection({
   linkLabel,
 }: FeatureSectionProps) {
   return (
-    <Box component="section" aria-labelledby="feature-heading" sx={{ py: 10 }}>
+    <Box
+      component="section"
+      aria-labelledby="feature-heading"
+      sx={{ py: { xs: 6, sm: 10 } }}
+    >
       <Container maxWidth="xl">
         <Grid container spacing={6} sx={{ alignItems: "center" }}>
           <Grid size={{ xs: 12, md: 6 }}>

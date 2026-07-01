@@ -31,7 +31,11 @@ export default function CategoryShowcase({
   const featuredCategories = rootCategories.slice(0, 3);
 
   return (
-    <Box component="section" aria-label="Shop by category" sx={{ py: 10 }}>
+    <Box
+      component="section"
+      aria-label="Shop by category"
+      sx={{ py: { xs: 6, sm: 10 } }}
+    >
       <Container maxWidth="xl">
         <Typography variant="h4" component="h2" sx={{ mb: 3, fontWeight: 500 }}>
           Shop by Category

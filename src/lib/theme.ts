@@ -19,8 +19,8 @@ let theme = createTheme({
       disabled: "#6B7280",
     },
     primary: {
-      main: "#FF6B4A",
-      dark: "#F0552F",
+      main: "#D9765C",
+      dark: "#C05E45",
       contrastText: "#0E1014",
     },
     secondary: {

@@ -16,7 +16,7 @@ export default function ProductCarousel({
   if (products.length === 0) return null;
 
   return (
-    <Box component="section" aria-label={title} sx={{ py: 12 }}>
+    <Box component="section" aria-label={title} sx={{ py: { xs: 6, sm: 12 } }}>
       <Container maxWidth="xl">
         <Carousel title={title} ariaLabel={title}>
           {products.map((product) => (
