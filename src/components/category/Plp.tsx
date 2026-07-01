@@ -14,12 +14,15 @@ import Alert from "@mui/material/Alert";
 import ProductGrid from "@/components/product/ProductGrid";
 import { Product } from "@/types/product";
 import { useRouter } from "next/router";
+import { Divider } from "@mui/material";
 
 type PlpProps = {
   categoryId: number;
   categoryName: string;
   initialProducts: Product[];
   initialTotalPages: number;
+  description: string | null;
+  initialTotalCount: number;
 };
 
 type LoadParams = {
@@ -32,8 +35,10 @@ type LoadParams = {
 export default function Plp({
   categoryId,
   categoryName,
+  description,
   initialProducts,
   initialTotalPages,
+  initialTotalCount,
 }: PlpProps) {
   const [products, setProducts] = useState<Product[]>(initialProducts);
   const [totalPages, setTotalPages] = useState(initialTotalPages);
@@ -43,6 +48,7 @@ export default function Plp({
   const [maxPrice, setMaxPrice] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [totalCount, setTotalCount] = useState(initialTotalCount);
 
   const router = useRouter();
   const [hydrated, setHydrated] = useState(false);
@@ -67,6 +73,7 @@ export default function Plp({
         setProducts((data.items ?? []).filter(Boolean) as Product[]);
         setTotalPages(data.page_info?.total_pages ?? 1);
         setPage(page);
+        setTotalCount(data.total_count ?? 0);
 
         const urlQuery: Record<string, string | string[]> = {
           slug: router.query.slug as string[],
@@ -130,19 +137,85 @@ export default function Plp({
   };
 
   return (
-    <Container maxWidth="lg" sx={{ py: 5 }}>
-      <Typography variant="h3" component="h1" sx={{ fontWeight: 700, mb: 3 }}>
-        {categoryName}
-      </Typography>
+    <Container maxWidth="xl" sx={{ py: 5 }}>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          mb: 4,
+        }}
+      >
+        <Typography variant="h2" component="h1" sx={{ fontWeight: 600, mb: 3 }}>
+          {categoryName}
+        </Typography>
+        {description && (
+          <Box
+            sx={{
+              color: "text.primary",
+              fontSize: "1.1rem",
+              textAlign: "center",
+              maxWidth: 720,
+              mx: "auto",
+              mb: 4,
+            }}
+            dangerouslySetInnerHTML={{ __html: description }}
+          />
+        )}
+      </Box>
 
       <Stack
         sx={{
           mb: 4,
-          direction: { xs: "column", sm: "row" },
-          alignItems: { xs: "stretch", sm: "flex-end" },
+          flexDirection: { xs: "column", sm: "row" },
+          alignItems: { xs: "stretch", sm: "justify-content" },
+          justifyContent: "space-between",
           gap: 2,
         }}
       >
+        <Box
+          sx={{
+            display: "flex",
+            gap: 2,
+            justifyContent: "space-between",
+            flexWrap: "wrap",
+          }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              gap: 2,
+              justifyContent: "center",
+              flexWrap: "wrap",
+            }}
+          >
+            <TextField
+              size="small"
+              label="Min price"
+              type="number"
+              value={minPrice}
+              onChange={(e) => setMinPrice(e.target.value)}
+              sx={{ width: 120 }}
+            />
+            <TextField
+              size="small"
+              label="Max price"
+              type="number"
+              value={maxPrice}
+              onChange={(e) => setMaxPrice(e.target.value)}
+              sx={{ width: 120 }}
+            />
+          </Box>
+          <Button
+            variant="outlined"
+            onClick={handleApplyPrice}
+            disabled={loading}
+          >
+            Apply
+          </Button>
+        </Box>
+
         <FormControl size="small" sx={{ minWidth: 180 }}>
           <InputLabel id="sort-label">Sort by</InputLabel>
           <Select
@@ -158,31 +231,33 @@ export default function Plp({
             <MenuItem value="name_desc">Name: Z–A</MenuItem>
           </Select>
         </FormControl>
-
-        <TextField
-          size="small"
-          label="Min price"
-          type="number"
-          value={minPrice}
-          onChange={(e) => setMinPrice(e.target.value)}
-          sx={{ width: 120 }}
-        />
-        <TextField
-          size="small"
-          label="Max price"
-          type="number"
-          value={maxPrice}
-          onChange={(e) => setMaxPrice(e.target.value)}
-          sx={{ width: 120 }}
-        />
-        <Button
-          variant="outlined"
-          onClick={handleApplyPrice}
-          disabled={loading}
-        >
-          Apply
-        </Button>
       </Stack>
+
+      {/* display number of products */}
+      <Box
+        sx={{
+          maxWidth: 640,
+          mx: "auto",
+          display: "grid",
+          gridTemplateColumns: "1fr max-content 1fr",
+          alignItems: "center",
+          gap: 2,
+          mb: 6,
+        }}
+      >
+        <Divider />
+        <Typography
+          color="text.secondary"
+          sx={{
+            fontSize: "0.85rem",
+            textAlign: "center",
+            color: "text.secondary",
+          }}
+        >
+          {totalCount} product{totalCount !== 1 ? "s" : ""} found
+        </Typography>
+        <Divider />
+      </Box>
 
       {error && (
         <Alert severity="error" sx={{ mb: 3 }}>

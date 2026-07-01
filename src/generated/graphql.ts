@@ -351,6 +351,7 @@ export type CategoryLandingQuery = {
       url_key: string | null;
       meta_title: string | null;
       meta_description: string | null;
+      description: string | null;
       children: Array<{
         uid: string;
         name: string | null;
@@ -1136,6 +1137,10 @@ export const CategoryLandingDocument = {
                       {
                         kind: "Field",
                         name: { kind: "Name", value: "meta_description" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "description" },
                       },
                       {
                         kind: "Field",

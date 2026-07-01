@@ -6,6 +6,7 @@ query CategoryLanding($urlPath: String!) {
       url_key
       meta_title
       meta_description
+      description
       children {
         uid
         name

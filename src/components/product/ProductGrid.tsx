@@ -10,8 +10,8 @@ type ProductGridProps = {
 export default function ProductGrid({ products }: ProductGridProps) {
   if (products.length === 0) {
     return (
-      <Typography color="text.secondary" sx={{ py: 4 }}>
-        No products found.
+      <Typography color="text.secondary" sx={{ py: 4, textAlign: "center" }}>
+        We couldn&apos;t find any results.
       </Typography>
     );
   }

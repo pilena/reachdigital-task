@@ -27,7 +27,7 @@ export default function CategoryLanding({
 }: CategoryLandingProps) {
   return (
     <Box component="section" sx={{ py: 5 }}>
-      <Container maxWidth="lg">
+      <Container maxWidth="xl">
         <Typography variant="h3" component="h1" sx={{ fontWeight: 700, mb: 4 }}>
           {name}
         </Typography>

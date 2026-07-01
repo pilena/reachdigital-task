@@ -14,35 +14,48 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import LanguageIcon from "@mui/icons-material/Language";
 
 const customerServiceLinks = [
-  { label: "Order", href: "#" },
-  { label: "Brand/Sizes", href: "#" },
-  { label: "Newsletter", href: "#" },
-  { label: "Payment Information", href: "#" },
-  { label: "Returns", href: "#" },
-  { label: "Shipping", href: "#" },
+  { label: "Order", href: "https://reachdigital-task.vercel.app/" },
+  { label: "Brand/Sizes", href: "https://reachdigital-task.vercel.app/" },
+  { label: "Newsletter", href: "https://reachdigital-task.vercel.app/" },
+  {
+    label: "Payment Information",
+    href: "https://reachdigital-task.vercel.app/",
+  },
+  { label: "Returns", href: "https://reachdigital-task.vercel.app/" },
+  { label: "Shipping", href: "https://reachdigital-task.vercel.app/" },
 ];
 
 const aboutLinks = [
-  { label: "Contact", href: "#" },
-  { label: "Careers", href: "#" },
-  { label: "About Us", href: "#" },
-  { label: "Loyalty program", href: "#" },
-  { label: "Corporate responsibility", href: "#" },
+  { label: "Contact", href: "https://reachdigital-task.vercel.app/" },
+  { label: "Careers", href: "https://reachdigital-task.vercel.app/" },
+  { label: "About Us", href: "https://reachdigital-task.vercel.app/" },
+  { label: "Loyalty program", href: "https://reachdigital-task.vercel.app/" },
+  {
+    label: "Corporate responsibility",
+    href: "https://reachdigital-task.vercel.app/",
+  },
 ];
 
 const bottomLinks = [
-  { label: "Terms and conditions", href: "#" },
-  { label: "Credits", href: "#" },
-  { label: "Subscribe", href: "#" },
-  { label: "Remove account", href: "#" },
-  { label: "Newsletter", href: "#" },
+  {
+    label: "Terms and conditions",
+    href: "https://reachdigital-task.vercel.app/",
+  },
+  { label: "Credits", href: "https://reachdigital-task.vercel.app/" },
+  { label: "Subscribe", href: "https://reachdigital-task.vercel.app/" },
+  { label: "Remove account", href: "https://reachdigital-task.vercel.app/" },
+  { label: "Newsletter", href: "https://reachdigital-task.vercel.app/" },
 ];
 
 const socialLinks = [
-  { label: "LinkedIn", href: "#", icon: LinkedInIcon },
-  { label: "Facebook", href: "#", icon: FacebookIcon },
-  { label: "Twitter", href: "#", icon: TwitterIcon },
-  { label: "Instagram", href: "#", icon: InstagramIcon },
+  { label: "LinkedIn", href: "https://www.linkedin.com/", icon: LinkedInIcon },
+  { label: "Facebook", href: "https://www.facebook.com/", icon: FacebookIcon },
+  { label: "Twitter", href: "https://twitter.com/", icon: TwitterIcon },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/",
+    icon: InstagramIcon,
+  },
 ];
 
 export default function Footer() {

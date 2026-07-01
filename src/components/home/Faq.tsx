@@ -65,7 +65,11 @@ const faqStructuredData = {
 
 export default function Faq() {
   return (
-    <Box component="section" aria-labelledby="faq-heading" sx={{ py: 6 }}>
+    <Box
+      component="section"
+      aria-labelledby="faq-heading"
+      sx={{ pt: 6, pb: 12 }}
+    >
       <Head>
         <script
           type="application/ld+json"

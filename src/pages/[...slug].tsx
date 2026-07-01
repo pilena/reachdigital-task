@@ -36,6 +36,8 @@ type PlpProps = {
   initialProducts: Product[];
   initialTotalPages: number;
   breadcrumbs: Crumb[];
+  description: string | null;
+  initialTotalCount: number;
 };
 
 type PageProps = LandingProps | PlpProps;
@@ -48,7 +50,7 @@ export default function CategoryPage(props: PageProps) {
         description={props.seo.description}
         canonical={props.seo.canonical}
       />
-      <Container maxWidth="lg" sx={{ pt: 3 }}>
+      <Container maxWidth="xl" sx={{ pt: 3 }}>
         <Breadcrumbs items={props.breadcrumbs} />
       </Container>
       {props.variant === "landing" ? (
@@ -63,6 +65,8 @@ export default function CategoryPage(props: PageProps) {
           categoryName={props.categoryName}
           initialProducts={props.initialProducts}
           initialTotalPages={props.initialTotalPages}
+          description={props.description}
+          initialTotalCount={props.initialTotalCount}
         />
       )}
     </Layout>
@@ -172,6 +176,8 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ params }) => {
       categoryName: cat.name ?? "",
       initialProducts: (productsData.products?.items ?? []).filter(notNull),
       initialTotalPages: productsData.products?.page_info?.total_pages ?? 1,
+      description: cat.description ?? null,
+      initialTotalCount: productsData.products?.total_count ?? 0,
       breadcrumbs,
     },
     revalidate: 60,
