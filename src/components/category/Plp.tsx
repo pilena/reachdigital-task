@@ -126,6 +126,13 @@ export default function Plp({
     load({ page: 1, sort: newSort, minPrice, maxPrice });
   };
 
+  const handlePriceChange =
+    (setter: (value: string) => void) =>
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const value = e.target.value;
+      if (value === "" || Number(value) >= 0) setter(value);
+    };
+
   const handleApplyPrice = () => {
     load({ page: 1, sort, minPrice, maxPrice });
   };
@@ -195,7 +202,7 @@ export default function Plp({
               label="Min price"
               type="number"
               value={minPrice}
-              onChange={(e) => setMinPrice(e.target.value)}
+              onChange={handlePriceChange(setMinPrice)}
               sx={{ width: 120 }}
             />
             <TextField
@@ -203,7 +210,7 @@ export default function Plp({
               label="Max price"
               type="number"
               value={maxPrice}
-              onChange={(e) => setMaxPrice(e.target.value)}
+              onChange={handlePriceChange(setMaxPrice)}
               sx={{ width: 120 }}
             />
           </Box>
