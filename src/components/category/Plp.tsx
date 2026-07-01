@@ -15,6 +15,7 @@ import ProductGrid from "@/components/product/ProductGrid";
 import { Product } from "@/types/product";
 import { useRouter } from "next/router";
 import { Divider } from "@mui/material";
+import ProductListJsonLd from "@/components/common/ProductListJsonLd";
 
 type PlpProps = {
   categoryId: number;
@@ -144,155 +145,162 @@ export default function Plp({
   };
 
   return (
-    <Container maxWidth="xl" sx={{ py: 5 }}>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          mb: 4,
-        }}
-      >
-        <Typography variant="h2" component="h1" sx={{ fontWeight: 600, mb: 3 }}>
-          {categoryName}
-        </Typography>
-        {description && (
-          <Box
-            sx={{
-              color: "text.primary",
-              fontSize: "1.1rem",
-              textAlign: "center",
-              maxWidth: 720,
-              mx: "auto",
-              mb: 4,
-            }}
-            dangerouslySetInnerHTML={{ __html: description }}
-          />
-        )}
-      </Box>
-
-      <Stack
-        sx={{
-          mb: 4,
-          flexDirection: { xs: "column", sm: "row" },
-          alignItems: { xs: "stretch", sm: "justify-content" },
-          justifyContent: "space-between",
-          gap: 2,
-        }}
-      >
+    <>
+      <ProductListJsonLd products={products} />
+      <Container maxWidth="xl" sx={{ py: 5 }}>
         <Box
           sx={{
             display: "flex",
-            gap: 2,
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            mb: 4,
+          }}
+        >
+          <Typography
+            variant="h2"
+            component="h1"
+            sx={{ fontWeight: 600, mb: 3 }}
+          >
+            {categoryName}
+          </Typography>
+          {description && (
+            <Box
+              sx={{
+                color: "text.primary",
+                fontSize: "1.1rem",
+                textAlign: "center",
+                maxWidth: 720,
+                mx: "auto",
+                mb: 4,
+              }}
+              dangerouslySetInnerHTML={{ __html: description }}
+            />
+          )}
+        </Box>
+
+        <Stack
+          sx={{
+            mb: 4,
+            flexDirection: { xs: "column", sm: "row" },
+            alignItems: { xs: "stretch", sm: "justify-content" },
             justifyContent: "space-between",
-            flexWrap: "wrap",
+            gap: 2,
           }}
         >
           <Box
             sx={{
               display: "flex",
               gap: 2,
-              justifyContent: "center",
+              justifyContent: "space-between",
               flexWrap: "wrap",
             }}
           >
-            <TextField
-              size="small"
-              label="Min price"
-              type="number"
-              value={minPrice}
-              onChange={handlePriceChange(setMinPrice)}
-              sx={{ width: 120 }}
-            />
-            <TextField
-              size="small"
-              label="Max price"
-              type="number"
-              value={maxPrice}
-              onChange={handlePriceChange(setMaxPrice)}
-              sx={{ width: 120 }}
-            />
+            <Box
+              sx={{
+                display: "flex",
+                gap: 2,
+                justifyContent: "center",
+                flexWrap: "wrap",
+              }}
+            >
+              <TextField
+                size="small"
+                label="Min price"
+                type="number"
+                value={minPrice}
+                onChange={handlePriceChange(setMinPrice)}
+                sx={{ width: 120 }}
+              />
+              <TextField
+                size="small"
+                label="Max price"
+                type="number"
+                value={maxPrice}
+                onChange={handlePriceChange(setMaxPrice)}
+                sx={{ width: 120 }}
+              />
+            </Box>
+            <Button
+              variant="outlined"
+              onClick={handleApplyPrice}
+              disabled={loading}
+            >
+              Apply
+            </Button>
           </Box>
-          <Button
-            variant="outlined"
-            onClick={handleApplyPrice}
-            disabled={loading}
-          >
-            Apply
-          </Button>
-        </Box>
 
-        <FormControl size="small" sx={{ minWidth: 180 }}>
-          <InputLabel id="sort-label">Sort by</InputLabel>
-          <Select
-            labelId="sort-label"
-            label="Sort by"
-            value={sort}
-            onChange={handleSortChange}
-          >
-            <MenuItem value="">Default</MenuItem>
-            <MenuItem value="price_asc">Price: low to high</MenuItem>
-            <MenuItem value="price_desc">Price: high to low</MenuItem>
-            <MenuItem value="name_asc">Name: A–Z</MenuItem>
-            <MenuItem value="name_desc">Name: Z–A</MenuItem>
-          </Select>
-        </FormControl>
-      </Stack>
+          <FormControl size="small" sx={{ minWidth: 180 }}>
+            <InputLabel id="sort-label">Sort by</InputLabel>
+            <Select
+              labelId="sort-label"
+              label="Sort by"
+              value={sort}
+              onChange={handleSortChange}
+            >
+              <MenuItem value="">Default</MenuItem>
+              <MenuItem value="price_asc">Price: low to high</MenuItem>
+              <MenuItem value="price_desc">Price: high to low</MenuItem>
+              <MenuItem value="name_asc">Name: A–Z</MenuItem>
+              <MenuItem value="name_desc">Name: Z–A</MenuItem>
+            </Select>
+          </FormControl>
+        </Stack>
 
-      {/* display number of products */}
-      <Box
-        sx={{
-          maxWidth: 640,
-          mx: "auto",
-          display: "grid",
-          gridTemplateColumns: "1fr max-content 1fr",
-          alignItems: "center",
-          gap: 2,
-          mb: 6,
-        }}
-      >
-        <Divider />
-        <Typography
-          color="text.secondary"
+        {/* display number of products */}
+        <Box
           sx={{
-            fontSize: "0.85rem",
-            textAlign: "center",
-            color: "text.secondary",
+            maxWidth: 640,
+            mx: "auto",
+            display: "grid",
+            gridTemplateColumns: "1fr max-content 1fr",
+            alignItems: "center",
+            gap: 2,
+            mb: 6,
           }}
         >
-          {totalCount} product{totalCount !== 1 ? "s" : ""} found
-        </Typography>
-        <Divider />
-      </Box>
+          <Divider />
+          <Typography
+            color="text.secondary"
+            sx={{
+              fontSize: "0.85rem",
+              textAlign: "center",
+              color: "text.secondary",
+            }}
+          >
+            {totalCount} product{totalCount !== 1 ? "s" : ""} found
+          </Typography>
+          <Divider />
+        </Box>
 
-      {error && (
-        <Alert severity="error" sx={{ mb: 3 }}>
-          {error}
-        </Alert>
-      )}
+        {error && (
+          <Alert severity="error" sx={{ mb: 3 }}>
+            {error}
+          </Alert>
+        )}
 
-      <Box
-        sx={{
-          opacity: loading ? 0.5 : 1,
-          transition: "opacity 0.2s",
-          pointerEvents: loading ? "none" : "auto",
-        }}
-      >
-        <ProductGrid products={products} />
-      </Box>
+        <Box
+          sx={{
+            opacity: loading ? 0.5 : 1,
+            transition: "opacity 0.2s",
+            pointerEvents: loading ? "none" : "auto",
+          }}
+        >
+          <ProductGrid products={products} />
+        </Box>
 
-      {totalPages > 1 && (
-        <Stack sx={{ mt: 5, alignItems: "center" }}>
-          <Pagination
-            count={totalPages}
-            page={page}
-            onChange={handlePageChange}
-            color="primary"
-            disabled={loading}
-          />
-        </Stack>
-      )}
-    </Container>
+        {totalPages > 1 && (
+          <Stack sx={{ mt: 5, alignItems: "center" }}>
+            <Pagination
+              count={totalPages}
+              page={page}
+              onChange={handlePageChange}
+              color="primary"
+              disabled={loading}
+            />
+          </Stack>
+        )}
+      </Container>
+    </>
   );
 }

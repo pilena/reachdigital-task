@@ -12,6 +12,7 @@ import { Product } from "@/types/product";
 import Layout from "@/components/layout/Layout";
 import StatementSection from "@/components/home/StatemantSection";
 import FeatureSection from "@/components/home/FeatureSection";
+import { SITE_URL } from "@/lib/config";
 
 type HomeProps = {
   categories: CategoriesQuery;
@@ -22,6 +23,8 @@ export default function Home({ categories, products }: HomeProps) {
   return (
     <Layout categories={categories.categories}>
       <Seo
+        siteSchema
+        canonical={`${SITE_URL}/`}
         title="Home"
         description="Discover the latest fashion collection for women, men, and kids. Free shipping over $50, easy 30-day returns."
       />
