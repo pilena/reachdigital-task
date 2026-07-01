@@ -7,6 +7,7 @@ import { addToCart } from "@/lib/cart";
 import OptionSelector from "./OptionsSelector";
 import QuantitySelector from "./QtySelector";
 import Breadcrumbs, { Crumb } from "../common/Breadcrumbs";
+import FeatureSection from "../home/FeatureSection";
 
 function formatPrice(value: number, currency: string) {
   return new Intl.NumberFormat("en-US", {
@@ -220,6 +221,14 @@ export default function ProductDetail({
           />
         </Box>
       )}
+
+      <FeatureSection
+        image="/product_feature_image.webp"
+        imageAlt="Gift-wrapped novelty socks"
+        eyebrow="The perfect gift"
+        title="Suprise your loved ones"
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus turpis ex, ut placerat enim vestibulum quis. Aliquam finibus accumsan eros, vitae commodo tellus molestie a. Aliquam fringilla in lectus in blandit. Quisque placerat pellentesque orci, et tincidunt nisl fringilla non."
+      />
 
       <Specifications rows={specRows} />
     </Box>

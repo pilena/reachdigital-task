@@ -6,7 +6,27 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import NextLink from "next/link";
 import Image from "next/image";
 
-export default function FeatureSplit() {
+type FeatureSectionProps = {
+  image: string;
+  imageAlt: string;
+  eyebrow: string;
+  title: string;
+  description?: string;
+  showLink?: boolean;
+  linkHref?: string;
+  linkLabel?: string;
+};
+
+export default function FeatureSection({
+  image,
+  imageAlt,
+  eyebrow,
+  title,
+  description,
+  showLink = false,
+  linkHref,
+  linkLabel,
+}: FeatureSectionProps) {
   return (
     <Box component="section" aria-labelledby="feature-heading" sx={{ py: 10 }}>
       <Container maxWidth="xl">
@@ -22,8 +42,8 @@ export default function FeatureSplit() {
               }}
             >
               <Image
-                src="/feature_image.webp"
-                alt="Impressionist and modern master artworks"
+                src={image}
+                alt={imageAlt}
                 fill
                 sizes="(max-width: 900px) 100vw, 50vw"
                 style={{ objectFit: "cover" }}
@@ -42,7 +62,7 @@ export default function FeatureSplit() {
                   color: "var(--primary)",
                 }}
               >
-                A peek into history
+                {eyebrow}
               </Typography>
               <Typography
                 variant="h3"
@@ -50,27 +70,38 @@ export default function FeatureSplit() {
                 id="feature-heading"
                 sx={{ fontWeight: 600, lineHeight: 1.1 }}
               >
-                Impressionists and modern masters
+                {title}
               </Typography>
-              <Box
-                component={NextLink}
-                href="/men/art"
-                aria-label="Link to men's art category"
-                sx={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 0.5,
-                  mt: 1,
-                  color: "var(--text)",
-                  textDecoration: "none",
-                  width: "fit-content",
-                  "&:hover": { textDecoration: "underline" },
-                  transition: "color 0.25s ease",
-                }}
-              >
-                <Typography component="span">A complete collection</Typography>
-                <ArrowForwardIcon fontSize="small" aria-hidden="true" />
-              </Box>
+
+              {description && (
+                <Typography
+                  component="p"
+                  sx={{ mt: 1 }}
+                >
+                  {description}
+                </Typography>
+              )}
+
+              {showLink && linkHref && linkLabel && (
+                <Box
+                  component={NextLink}
+                  href={linkHref}
+                  sx={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 0.5,
+                    mt: 1,
+                    color: "var(--text)",
+                    textDecoration: "none",
+                    width: "fit-content",
+                    "&:hover": { textDecoration: "underline" },
+                    transition: "color 0.25s ease",
+                  }}
+                >
+                  <Typography component="span">{linkLabel}</Typography>
+                  <ArrowForwardIcon fontSize="small" aria-hidden="true" />
+                </Box>
+              )}
             </Box>
           </Grid>
         </Grid>

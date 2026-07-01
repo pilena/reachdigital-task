@@ -11,7 +11,7 @@ import ProductCarousel from "@/components/product/ProductCarousel";
 import { Product } from "@/types/product";
 import Layout from "@/components/layout/Layout";
 import StatementSection from "@/components/home/StatemantSection";
-import FeatureSplit from "@/components/home/FeatureSection";
+import FeatureSection from "@/components/home/FeatureSection";
 
 type HomeProps = {
   categories: CategoriesQuery;
@@ -30,7 +30,15 @@ export default function Home({ categories, products }: HomeProps) {
       <StatementSection />
       <CategoryShowcase categories={categories.categories} />
       <UspStrip />
-      <FeatureSplit />
+      <FeatureSection
+        image="/feature_image.webp"
+        imageAlt="Impressionist and modern master artworks"
+        eyebrow="A peek into history"
+        title="Impressionists and modern masters"
+        showLink
+        linkHref="/men/art"
+        linkLabel="A complete collection"
+      />
       <Faq />
     </Layout>
   );
