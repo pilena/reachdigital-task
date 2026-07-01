@@ -53,7 +53,7 @@ export default function Carousel({
         }}
       >
         {title ? (
-          <Typography variant="h4" component="h2" sx={{ fontWeight: 700 }}>
+          <Typography variant="h4" component="h2">
             {title}
           </Typography>
         ) : (

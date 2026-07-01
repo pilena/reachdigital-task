@@ -33,7 +33,7 @@ export default function CategoryShowcase({
   return (
     <Box component="section" aria-label="Shop by category" sx={{ py: 10 }}>
       <Container maxWidth="xl">
-        <Typography variant="h4" component="h2" sx={{ mb: 3, fontWeight: 700 }}>
+        <Typography variant="h4" component="h2" sx={{ mb: 3, fontWeight: 500 }}>
           Shop by Category
         </Typography>
         <Grid container spacing={3}>

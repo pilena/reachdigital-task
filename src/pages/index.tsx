@@ -11,6 +11,7 @@ import ProductCarousel from "@/components/product/ProductCarousel";
 import { Product } from "@/types/product";
 import Layout from "@/components/layout/Layout";
 import StatementSection from "@/components/home/StatemantSection";
+import FeatureSplit from "@/components/home/FeatureSection";
 
 type HomeProps = {
   categories: CategoriesQuery;
@@ -29,6 +30,7 @@ export default function Home({ categories, products }: HomeProps) {
       <StatementSection />
       <CategoryShowcase categories={categories.categories} />
       <UspStrip />
+      <FeatureSplit />
       <Faq />
     </Layout>
   );
