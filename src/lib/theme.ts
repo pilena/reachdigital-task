@@ -43,7 +43,7 @@ let theme = createTheme({
             textTransform: "none",
             "&:hover": {
               backgroundColor: "transparent",
-              color: "var(--text-muted)",
+              color: "primary.main",
               transition: "color 0.3s ease",
             },
           },
@@ -56,7 +56,7 @@ let theme = createTheme({
           textDecoration: "none",
           color: "inherit",
           "&:hover": {
-            color: "var(--text-muted)",
+            color: "primary.main",
             transition: "color 0.3s ease",
           },
         },

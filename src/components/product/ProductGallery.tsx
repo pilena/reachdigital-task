@@ -20,7 +20,11 @@ export default function ProductGallery({ images, productName }: Props) {
   }
 
   return (
-    <Carousel ariaLabel={`${productName} images`} slideBasis={{ xs: "100%" }} noIconButtons>
+    <Carousel
+      ariaLabel={`${productName} images`}
+      slideBasis={{ xs: "100%" }}
+      noIconButtons
+    >
       {images.map((img, i) => (
         <Box
           key={img.url}
